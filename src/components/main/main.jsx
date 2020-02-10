@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 
 const Main = (props) => {
-  const {ADSCOUNT, PLACES} = props;
+  const {ADSCOUNT, PLACES, onHeaderClick} = props;
 
   const renderCards = () => PLACES.map((place, index) => (
     <article className="cities__place-card place-card" key={index}>
@@ -49,7 +49,7 @@ const Main = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name">
+        <h2 className="place-card__name" onClick={onHeaderClick} data-test='test-header'>
           <a href="#">
             {place}
           </a>
@@ -179,6 +179,7 @@ const Main = (props) => {
 Main.propTypes = {
   ADSCOUNT: PropTypes.number.isRequired,
   PLACES: PropTypes.array,
+  onHeaderClick: PropTypes.func
 };
 
 export default Main;
