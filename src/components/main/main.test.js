@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Main from './main';
-import {mockTestData} from '../../utils/test-mock';
+import {mockCards} from '../../utils/test-mock.js';
 
 it(`Main successfully rendered `, () => {
-  const tree = renderer.create(<Main {...mockTestData} />);
+  const tree = renderer.create(<Main cards ={mockCards} onCardHover = {() => {}} />);
   expect(tree).toMatchSnapshot();
 });
