@@ -4,6 +4,6 @@ import OfferCard from "./offer-card";
 import {mockCards} from '../../utils/test-mock.js';
 
 it(`Card successfully rendered`, () => {
-  const tree = renderer.create(<OfferCard card={mockCards[0]} onCardHover = {() => {}}/>);
+  const tree = renderer.create(<OfferCard card={mockCards[0]} onCardHover = {() => {}} onHeaderClick = {() => {}}/>);
   expect(tree).toMatchSnapshot();
 });

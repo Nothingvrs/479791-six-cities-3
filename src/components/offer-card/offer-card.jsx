@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {cardPropTypes} from "../../utils/utils";
 
 const OfferCard = (props) => {
-  const {name, type, img, price, isInBookmark, mark, isPremium} = props.card;
-  const {onCardHover} = props;
+  const {name, type, imgs, price, isInBookmark, mark, isPremium, id} = props.card;
+  const {onCardHover, onHeaderClick} = props;
+
   return (
-    <article className="cities__place-card place-card" onMouseOver={onCardHover} data-test = "test-card">
+    <article className="cities__place-card place-card" onMouseOver={onCardHover} data-test = "test-card-hover">
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -14,7 +16,7 @@ const OfferCard = (props) => {
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={img} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={imgs[0]} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -31,7 +33,7 @@ const OfferCard = (props) => {
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <span className="visually-hidden">{isInBookmark ? `In` : `To`} bookmarks</span>
           </button>
         </div>
         <div className="place-card__rating rating">
@@ -40,8 +42,11 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name" data-test="test-header">
-          <a href="#">{name}</a>
+        <h2 className="place-card__name">
+          <a href="#" onClick={(evt) => {
+            evt.preventDefault();
+            onHeaderClick(id);
+          }} data-test="test-header-click">{name}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -50,16 +55,9 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  card: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    type: PropTypes.oneOf([`Apartment`, `Private room`]).isRequired,
-    img: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    isInBookmark: PropTypes.bool.isRequired,
-    mark: PropTypes.oneOf([...(new Array(6))].map((_, i) => i)).isRequired,
-    isPremium: PropTypes.bool.isRequired
-  }).isRequired,
-  onCardHover: PropTypes.func.isRequired
+  card: cardPropTypes,
+  onCardHover: PropTypes.func.isRequired,
+  onHeaderClick: PropTypes.func.isRequired
 };
 
 export default OfferCard;

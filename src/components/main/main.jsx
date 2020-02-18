@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import OffersList from "../offers-list/offers-list.jsx";
 
 const Main = (props) => {
-  const {numberOfOffers, cards, onCardHover} = props;
+  const {numberOfOffers, cards, onCardHover, onHeaderClick} = props;
 
-  const renderCards = () => <OffersList cards = {cards} onCardHover = {onCardHover}/>;
+  const renderCards = () => <OffersList cards = {cards} onCardHover = {onCardHover} onHeaderClick = {onHeaderClick}/>;
 
   return (
     <div className="page page--gray page--main">
@@ -127,8 +127,9 @@ const Main = (props) => {
 
 Main.propTypes = {
   numberOfOffers: PropTypes.number,
-  cards: PropTypes.array,
-  onCardHover: PropTypes.func
+  cards: PropTypes.array.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onHeaderClick: PropTypes.func.isRequired,
 };
 
 export default Main;
