@@ -36,7 +36,8 @@ export const mockCards = [
       name: `Angelina`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.3909553943508, 4.929309666406198]
   },
   {
     id: 1,
@@ -68,7 +69,8 @@ export const mockCards = [
       name: `Angelina`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.369553943508, 4.85309666406198]
   },
   {
     id: 2,
@@ -100,7 +102,8 @@ export const mockCards = [
       name: `Angelina`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.3909553943508, 4.929309666406198]
   },
   {
     id: 3,
@@ -132,7 +135,8 @@ export const mockCards = [
       name: `Angelina`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.3809553943508, 4.939309666406198]
   }
 ];
 

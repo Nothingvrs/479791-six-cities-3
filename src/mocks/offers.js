@@ -29,7 +29,8 @@ export default [
       name: `Angelina`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.3909553943508, 4.85309666406198]
   },
   {
     id: 1,
@@ -62,7 +63,8 @@ export default [
       name: `Natalia`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.369553943508, 4.85309666406198]
   },
   {
     id: 2,
@@ -97,7 +99,8 @@ export default [
       name: `Olga`,
       img: `img/avatar-angelina.jpg`,
       status: `pro`
-    }
+    },
+    addressCoords: [52.3909553943508, 4.929309666406198]
   },
   {
     id: 3,
@@ -133,6 +136,7 @@ export default [
       name: `Natalia`,
       img: `img/avatar-angelina.jpg`,
       status: `standard`
-    }
+    },
+    addressCoords: [52.3809553943508, 4.939309666406198]
   }
 ];
