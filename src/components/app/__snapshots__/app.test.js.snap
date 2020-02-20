@@ -631,9 +631,6 @@ exports[`App successfully rendered 1`] = `
           <div
             className="cities__right-section"
           >
-            <section
-              className="cities__map map"
-            />
             <div
               id="leafletmap"
               style={
