@@ -3,7 +3,13 @@ export default [
     id: 0,
     name: `Beautiful & luxurious apartment at great location`,
     type: `Apartment`,
-    imgs: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
+    imgs: [
+      `/img/apartment-01.jpg`,
+      `/img/apartment-02.jpg`,
+      `/img/apartment-03.jpg`,
+      `/img/studio-01.jpg`,
+      `/img/room.jpg`
+    ],
     price: 120,
     isInBookmark: true,
     mark: 4,
@@ -27,16 +33,42 @@ export default [
     avgMark: 4.5,
     hostUser: {
       name: `Angelina`,
-      img: `img/avatar-angelina.jpg`,
+      img: `/img/avatar-angelina.jpg`,
       status: `pro`
     },
-    addressCoords: [52.3909553943508, 4.85309666406198]
+    addressCoords: [52.3909553943508, 4.85309666406198],
+    comments: [
+      {
+        id: 1,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      },
+      {
+        id: 2,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      }
+    ],
+    nearOffers: [1, 2, 3]
   },
   {
     id: 1,
     name: `Wood and stone place`,
     type: `Private room`,
-    imgs: [`img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
+    imgs: [
+      `/img/room.jpg`,
+      `/img/apartment-01.jpg`,
+      `/img/apartment-02.jpg`,
+      `/img/apartment-03.jpg`,
+      `/img/studio-01.jpg`,
+      `/img/room.jpg`
+    ],
     price: 80,
     isInBookmark: true,
     mark: 0,
@@ -61,16 +93,34 @@ export default [
     avgMark: 4.5,
     hostUser: {
       name: `Natalia`,
-      img: `img/avatar-angelina.jpg`,
+      img: `/img/avatar-angelina.jpg`,
       status: `pro`
     },
-    addressCoords: [52.369553943508, 4.85309666406198]
+    addressCoords: [52.369553943508, 4.85309666406198],
+    comments: [
+      {
+        id: 2,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      }
+    ],
+    nearOffers: [0, 2, 3]
   },
   {
     id: 2,
     name: `Canal View Prinsengracht`,
     type: `Apartment`,
-    imgs: [`img/apartment-02.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
+    imgs: [
+      `/img/apartment-02.jpg`,
+      `/img/apartment-01.jpg`,
+      `/img/apartment-02.jpg`,
+      `/img/apartment-03.jpg`,
+      `/img/studio-01.jpg`,
+      `/img/room.jpg`
+    ],
     price: 132,
     isInBookmark: false,
     mark: 4,
@@ -97,16 +147,42 @@ export default [
     avgMark: 4.5,
     hostUser: {
       name: `Olga`,
-      img: `img/avatar-angelina.jpg`,
+      img: `/img/avatar-angelina.jpg`,
       status: `pro`
     },
-    addressCoords: [52.3909553943508, 4.929309666406198]
+    addressCoords: [52.3909553943508, 4.929309666406198],
+    comments: [
+      {
+        id: 1,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      },
+      {
+        id: 2,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      }
+    ],
+    nearOffers: [0, 1, 3]
   },
   {
     id: 3,
     name: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
-    imgs: [`img/apartment-03.jpg`, `img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/studio-01.jpg`, `img/room.jpg`],
+    imgs: [
+      `/img/apartment-03.jpg`,
+      `/img/apartment-01.jpg`,
+      `/img/apartment-02.jpg`,
+      `/img/apartment-03.jpg`,
+      `/img/studio-01.jpg`,
+      `/img/room.jpg`
+    ],
     price: 180,
     isInBookmark: false,
     mark: 5,
@@ -134,9 +210,28 @@ export default [
     avgMark: 4.5,
     hostUser: {
       name: `Natalia`,
-      img: `img/avatar-angelina.jpg`,
+      img: `/img/avatar-angelina.jpg`,
       status: `standard`
     },
-    addressCoords: [52.3809553943508, 4.939309666406198]
+    addressCoords: [52.3809553943508, 4.939309666406198],
+    comments: [
+      {
+        id: 1,
+        author: `Alex`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 1,
+        date: `2020-03-26T13:51:50.417Z`
+      },
+      {
+        id: 2,
+        author: `Max`,
+        authorImg: `/img/avatar-max.jpg`,
+        comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+        mark: 4,
+        date: `2020-01-26T13:51:50.417Z`
+      }
+    ],
+    nearOffers: [0, 1, 2]
   }
 ];

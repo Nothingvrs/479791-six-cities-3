@@ -19,3 +19,11 @@ export const cardPropTypes = PropTypes.shape({
     img: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired
   }).isRequired}).isRequired;
+
+export const commentShape = {
+  author: PropTypes.string.isRequired,
+  authorImg: PropTypes.string,
+  comment: PropTypes.string.isRequired,
+  mark: PropTypes.number,
+  date: PropTypes.string.isRequired
+};

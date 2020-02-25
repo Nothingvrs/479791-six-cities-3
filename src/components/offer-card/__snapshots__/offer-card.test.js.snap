@@ -7,6 +7,13 @@ exports[`Card successfully rendered 1`] = `
   onMouseOver={[Function]}
 >
   <div
+    className="place-card__mark"
+  >
+    <span>
+      Premium
+    </span>
+  </div>
+  <div
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
@@ -34,7 +41,7 @@ exports[`Card successfully rendered 1`] = `
           className="place-card__price-value"
         >
           €
-          35
+          120
         </b>
         <span
           className="place-card__price-text"
@@ -43,7 +50,7 @@ exports[`Card successfully rendered 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button false"
+        className="place-card__bookmark-button button place-card__bookmark-button--active"
         type="button"
       >
         <svg
@@ -58,7 +65,7 @@ exports[`Card successfully rendered 1`] = `
         <span
           className="visually-hidden"
         >
-          To
+          In
            bookmarks
         </span>
       </button>
@@ -72,7 +79,7 @@ exports[`Card successfully rendered 1`] = `
         <span
           style={
             Object {
-              "width": "40%",
+              "width": "80%",
             }
           }
         />
@@ -91,13 +98,13 @@ exports[`Card successfully rendered 1`] = `
         href="#"
         onClick={[Function]}
       >
-        Wood and stone place
+        Beautiful & luxurious apartment at great location
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      Private room
+      Apartment
     </p>
   </div>
 </article>

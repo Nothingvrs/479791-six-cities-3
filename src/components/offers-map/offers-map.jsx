@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, createRef} from 'react';
 import leaflet from 'leaflet';
 import {cardPropTypes} from '../../utils/utils';
 import PropTypes from 'prop-types';
@@ -6,17 +6,19 @@ import PropTypes from 'prop-types';
 class OffersMap extends PureComponent {
   constructor(props) {
     super(props);
+
+    this._mapDiv = createRef();
   }
 
   componentDidMount() {
     const city = [52.38333, 4.9];
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
 
     const zoom = 12;
-    const map = leaflet.map(`leafletmap`, {
+    const map = leaflet.map(this._mapDiv.current, {
       center: city,
       zoom,
       zoomControl: false,
@@ -34,12 +36,13 @@ class OffersMap extends PureComponent {
   }
 
   render() {
-    return <div id="leafletmap" style={{width: `100%`, height: `100%`}}></div>;
+    return <section ref={this._mapDiv} className={`${this.props.nearPlace ? `property__map` : `cities__map`} map`} />;
   }
 }
 
 OffersMap.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes).isRequired
+  cards: PropTypes.arrayOf(cardPropTypes).isRequired,
+  nearPlace: PropTypes.bool,
 };
 
 export default OffersMap;
