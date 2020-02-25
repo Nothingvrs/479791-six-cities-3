@@ -7,8 +7,7 @@ import toJson from "enzyme-to-json";
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 it(`Main successfully rendered`, () => {
-  const div = global.document.createElement(`div`);
-  global.document.body.appendChild(div);
-  const tree = mount(<Main cards ={mockCards} onCardHover = {() => {}} onHeaderClick = {() => {}} />, {attachTo: div});
+  const mockHistory = {push: jest.fn};
+  const tree = mount(<Main cards={mockCards} onCardHover={() => {}} onHeaderClick = {() => {}} history={mockHistory}/>);
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

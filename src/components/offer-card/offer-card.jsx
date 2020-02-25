@@ -4,17 +4,17 @@ import {cardPropTypes} from "../../utils/utils";
 
 const OfferCard = (props) => {
   const {name, type, imgs, price, isInBookmark, mark, isPremium, id} = props.card;
-  const {onCardHover, onHeaderClick} = props;
+  const {onCardHover, onHeaderClick, nearPlace} = props;
 
   return (
-    <article className="cities__place-card place-card" onMouseOver={onCardHover} data-test = "test-card-hover">
+    <article className={`${nearPlace ? `near-places__card` : `cities__place-card`} place-card`} onMouseOver={onCardHover} data-test = "test-card-hover">
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className= {`${nearPlace ? `near-places__image-wrapper` : `cities__image-wrapper`} place-card__image-wrapper`}>
         <a href="#">
           <img className="place-card__image" src={imgs[0]} width="260" height="200" alt="Place image" />
         </a>
@@ -57,7 +57,8 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   card: cardPropTypes,
   onCardHover: PropTypes.func.isRequired,
-  onHeaderClick: PropTypes.func.isRequired
+  onHeaderClick: PropTypes.func.isRequired,
+  nearPlace: PropTypes.bool,
 };
 
 export default OfferCard;
