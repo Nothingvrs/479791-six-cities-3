@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 import ReactDOM from 'react-dom';
-import cards from './mocks/offers';
 import App from './components/app/app.jsx';
+import {createStore} from "redux";
+import {reducer} from "./reducer.jsx";
+import {Provider} from 'react-redux';
 
-const onCardHover = () => {};
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f);
 
-const data = {
-  ADSCOUNT: 312,
-  cards,
-  onCardHover
-};
 
-ReactDOM.render(<App {...data} />, document.querySelector(`#root`));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));
+
