@@ -55,7 +55,8 @@ export default [
         date: `2020-01-26T13:51:50.417Z`
       }
     ],
-    nearOffers: [1, 2, 3]
+    nearOffers: [1, 2, 3],
+    city: `Amsterdam`
   },
   {
     id: 1,
@@ -107,7 +108,8 @@ export default [
         date: `2020-01-26T13:51:50.417Z`
       }
     ],
-    nearOffers: [0, 2, 3]
+    nearOffers: [0, 2, 3],
+    city: `Hamburg`
   },
   {
     id: 2,
@@ -169,7 +171,8 @@ export default [
         date: `2020-01-26T13:51:50.417Z`
       }
     ],
-    nearOffers: [0, 1, 3]
+    nearOffers: [0, 1, 3],
+    city: `Hamburg`
   },
   {
     id: 3,
@@ -232,6 +235,7 @@ export default [
         date: `2020-01-26T13:51:50.417Z`
       }
     ],
-    nearOffers: [0, 1, 2]
+    nearOffers: [0, 1, 2],
+    city: `Amsterdam`
   }
 ];

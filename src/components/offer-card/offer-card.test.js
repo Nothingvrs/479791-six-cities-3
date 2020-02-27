@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import OfferCard from "./offer-card";
+import OfferCard from "./offer-card.jsx";
 import {mockCards} from '../../utils/test-mock.js';
 
 it(`Card successfully rendered`, () => {
