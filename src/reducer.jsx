@@ -1,64 +1,58 @@
 import offers from './mocks/offers';
 
-export const ActionType = {
-  CHANGE_CITY: `change-city`,
-  GET_OFFER: `get-offer`,
-  CLEAR_OFFER: `clear-offer`
-};
-
-export const getOffersByCity = (initialOffers, cityName) =>
-  initialOffers.filter((offer) => offer.city === cityName);
-
 export const getCities = (initialOffers) => {
   const cities = new Set();
   initialOffers.forEach((offer) => cities.add(offer.city));
   return [...cities];
 };
 
-export const getOfferById = (initialOffers, id) => {
-  const offer = initialOffers.find((newOffer) => newOffer.id === Number(id));
-  if (!offer) {
-    return null;
-  }
-  const newOffer = Object.assign({}, offer);
-  newOffer.nearOffers = offer.nearOffers.map((offerId) =>
-    initialOffers.find((offerItem) => offerItem.id === offerId)
-  );
-  return newOffer;
-};
-
-const initialState = {
-  city: getCities(offers)[0],
-  offers: getOffersByCity(offers, getCities(offers)[0]),
-  citiesNames: getCities(offers)
+export const Action = {
+  SET_HOVERED: `set-hovered`,
+  RESET_HOVERED: `reset-hovered`,
+  SET_CITY: `set-city`,
+  SET_FILTER: `set-filter`,
+  RESET_FILTER: `reset-filter`
 };
 
 export const ActionCreator = {
-  changeCity: (cityName) => {
-    const newOffers = getOffersByCity(offers, cityName);
-
-    return {type: ActionType.CHANGE_CITY, payload: {offers: newOffers, city: cityName}};
+  setHovered(id) {
+    return {type: Action.SET_HOVERED, payload: id};
   },
-  getCardDetails(id) {
-
-    const newOffer = getOfferById(offers, id);
-
-    return {type: ActionType.GET_OFFER, payload: newOffer};
+  resetHovered() {
+    return {type: Action.RESET_HOVERED};
   },
-  clearOffer() {
-    return {type: ActionType.CLEAR_OFFER, payload: ``};
-  }
+  setFilter(filterName) {
+    return {type: Action.SET_FILTER, payload: filterName};
+  },
+  resetFilter() {
+    return {type: Action.RESET_FILTER};
+  },
+  setCity(cityName) {
+    return {type: Action.SET_CITY, payload: cityName};
+  },
+};
+
+
+const initialState = {
+  city: getCities(offers)[0],
+  offers,
+  citiesNames: getCities(offers),
+  filterName: `popular`,
+  hoveredId: -1
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
-      return Object.assign({}, state, {city: action.payload.city, offers: action.payload.offers});
-    case ActionType.GET_OFFER:
-      return Object.assign({}, state, {offer: action.payload});
-    case ActionType.CLEAR_OFFER:
-      return Object.assign({}, state, {offer: action.payload});
+    case Action.SET_HOVERED:
+      return Object.assign({}, state, {hoveredId: action.payload});
+    case Action.RESET_HOVERED:
+      return Object.assign({}, state, {hoveredId: -1});
+    case Action.SET_FILTER:
+      return Object.assign({}, state, {filterName: action.payload});
+    case Action.RESET_FILTER:
+      return Object.assign({}, state, {filterName: `popular`});
+    case Action.SET_CITY:
+      return Object.assign({}, state, {city: action.payload});
   }
-
   return state;
 };

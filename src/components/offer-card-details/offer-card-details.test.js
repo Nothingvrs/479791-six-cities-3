@@ -1,19 +1,21 @@
-import OfferCardDetails from './offer-card-details.jsx';
+import OfferCardDetails from './offer-card-details';
 import React from 'react';
 import {mockCards} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities, getOffersByCity} from '../../reducer';
+import {getCities} from '../../reducer';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
+import {BrowserRouter} from 'react-router-dom';
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 const initialState = {
   city: getCities(mockCards)[0],
-  offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
-  citiesNames: getCities(mockCards)
+  offers: mockCards,
+  citiesNames: getCities(mockCards),
+  hoveredId: -1
 };
 
 const reducer = (state = initialState) => {
@@ -32,12 +34,14 @@ it(`OfferCardDetails successfully rendered`, () => {
   };
   const tree = mount(
       <Provider store={store}>
-        <OfferCardDetails
-          card={mockCards[0]}
-          onHeaderClick={() => {}}
-          history={mockHistory}
-          match={mockMatch}
-        />
+        <BrowserRouter>
+          <OfferCardDetails
+            card={mockCards[0]}
+            onHeaderClick={() => {}}
+            history={mockHistory}
+            match={mockMatch}
+          />
+        </BrowserRouter>
       </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();

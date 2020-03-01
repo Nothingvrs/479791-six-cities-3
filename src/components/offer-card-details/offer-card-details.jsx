@@ -8,25 +8,13 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.jsx';
 
 class OfferCardDetail extends PureComponent {
-  componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props.getCard(id);
+  constructor() {
+    super();
     this._cardHeaderClickHandler = this._cardHeaderClickHandler.bind(this);
-  }
-
-  componentDidUpdate() {
-    if (!this.props.card) {
-      this.props.history.push(`/`);
-    }
-  }
-
-  componentWillUnmount() {
-    this.props.clearCard();
   }
 
   _cardHeaderClickHandler(newId) {
     this.props.history.push(`/offer/${newId}`);
-    this.props.getCard(newId);
   }
 
   renderImgs(imgs) {
@@ -101,16 +89,7 @@ class OfferCardDetail extends PureComponent {
         comments,
         nearOffers
       } = this.props.card;
-
-
-      const hasImages = () => {
-        return imgs.length > 0;
-      };
-
-      const hasComments = () => {
-        return comments.length === 0;
-      };
-
+      const {onCardHover, onCardUnHover, hoveredId} = this.props;
       return (
         <div className="page">
           <header className="header">
@@ -122,7 +101,7 @@ class OfferCardDetail extends PureComponent {
                     href="#"
                     onClick={(evt) => {
                       evt.preventDefault();
-                      history.push(`/`);
+                      this.props.history.push(`/`);
                     }}
                   >
                     <img
@@ -152,7 +131,7 @@ class OfferCardDetail extends PureComponent {
 
           <main className="page__main page__main--property">
             <section className="property">
-              {hasImages && (
+              {imgs.length > 0 && (
                 <div className="property__gallery-container container">
                   <div className="property__gallery">{this.renderImgs(imgs)}</div>
                 </div>
@@ -232,7 +211,7 @@ class OfferCardDetail extends PureComponent {
                     <h2 className="reviews__title">
                       Review{comments.length > 1 && `s`} &middot;{` `}
                       <span className="reviews__amount">
-                        {hasComments ? `Be the first!` : comments.length}
+                        {comments.length === 0 ? `Be the first!` : comments.length}
                       </span>
                     </h2>
                     <OfferReviewList comments={comments} />
@@ -267,7 +246,7 @@ class OfferCardDetail extends PureComponent {
                   </section>
                 </div>
               </div>
-              <OffersMap cards={nearOffers} nearPlace />
+              <OffersMap cards={nearOffers} nearPlace hoveredId={hoveredId} />
             </section>
             <div className="container">
               <section className="near-places places">
@@ -276,7 +255,8 @@ class OfferCardDetail extends PureComponent {
                   <OffersList
                     cards={nearOffers}
                     nearPlace
-                    onCardHover={() => {}}
+                    onCardHover={onCardHover}
+                    onCardUnHover={onCardUnHover}
                     onHeaderClick={this._cardHeaderClickHandler}
                   />
                 </div>
@@ -293,20 +273,41 @@ OfferCardDetail.propTypes = {
   card: cardPropTypes,
   history: PropTypes.object,
   match: PropTypes.object,
-  getCard: PropTypes.func.isRequired,
-  clearCard: PropTypes.func.isRequired
+  onCardHover: PropTypes.func.isRequired,
+  onCardUnHover: PropTypes.func.isRequired,
+  hoveredId: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  card: state.offer,
-});
+const mapStateToProps = (state, props) => {
+  const getOfferById = (initialOffers, id) => {
+    const offer = initialOffers.find((newOffer) => newOffer.id === Number(id));
+    if (!offer) {
+      return null;
+    }
+    const newOffer = Object.assign({}, offer);
+    newOffer.nearOffers = offer.nearOffers.map((offerId) =>
+      initialOffers.find((offerItem) => offerItem.id === offerId)
+    );
+    return newOffer;
+  };
 
+  const id = props.match.params.id;
+  const card = getOfferById(state.offers, id);
+  if (!card) {
+    props.history.push(`/`);
+  }
+
+  return {
+    card,
+    hoveredId: state.hoveredId
+  };
+};
 const mapDispatchToProps = (dispatch) => ({
-  getCard(id) {
-    dispatch(ActionCreator.getCardDetails(id));
+  onCardHover(id) {
+    dispatch(ActionCreator.setHovered(id));
   },
-  clearCard() {
-    dispatch(ActionCreator.clearOffer());
+  onCardUnHover() {
+    dispatch(ActionCreator.resetHovered());
   }
 });
 

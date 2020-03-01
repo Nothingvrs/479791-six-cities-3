@@ -2,7 +2,7 @@ import Enzyme, {shallow} from 'enzyme';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
 import React from 'react';
 import {findByTestAtr, mockCards} from '../../utils/test-mock';
-import OfferCard from './offer-card.jsx';
+import OfferCard from './offer-card';
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
@@ -14,10 +14,12 @@ const setUp = (props) => {
 describe(`OfferCard e2e testing`, () => {
   it(`Card header click is working`, () => {
     const hoverHandler = () => {};
+    const cardUnHoverHandler = () => {};
     const headerClickHandler = jest.fn();
     const app = setUp({
       card: mockCards[0],
       onCardHover: hoverHandler,
+      onCardUnHover: cardUnHoverHandler,
       onHeaderClick: headerClickHandler
     });
 
@@ -33,14 +35,32 @@ describe(`OfferCard e2e testing`, () => {
   it(`Card hover is working`, () => {
     const hoverHandler = jest.fn();
     const headerClickHandler = () => {};
+    const cardUnHoverHandler = () => {};
     const app = setUp({
       card: mockCards[0],
       onCardHover: hoverHandler,
+      onCardUnHover: cardUnHoverHandler,
       onHeaderClick: headerClickHandler
     });
 
     const card = findByTestAtr(app, `test-card-hover`);
     card.simulate(`mouseover`);
     expect(hoverHandler).toHaveBeenCalledTimes(1);
+  });
+
+  it(`Card unhover is working`, () => {
+    const hoverHandler = () => {};
+    const headerClickHandler = () => {};
+    const cardUnHoverHandler = jest.fn();
+    const app = setUp({
+      card: mockCards[0],
+      onCardHover: hoverHandler,
+      onCardUnHover: cardUnHoverHandler,
+      onHeaderClick: headerClickHandler
+    });
+
+    const card = findByTestAtr(app, `test-card-hover`);
+    card.simulate(`mouseleave`);
+    expect(cardUnHoverHandler).toHaveBeenCalledTimes(1);
   });
 });

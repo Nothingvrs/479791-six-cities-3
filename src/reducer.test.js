@@ -1,54 +1,76 @@
-import {ActionType, reducer, getCities, getOffersByCity, getOfferById} from './reducer';
-import {mockCards} from './utils/test-mock.js';
+import {Action, getCities, reducer} from "./reducer";
+import {mockCards} from "./utils/test-mock";
 
-it(`Reducer should change city`, () => {
-  expect(
-      reducer({
-        city: getCities(mockCards)[0],
-        offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
-        citiesNames: getCities(mockCards)
-      },
-      {
-        type: ActionType.CHANGE_CITY,
-        payload: {offers: getOffersByCity(mockCards, `Hamburg`), city: `Hamburg`}
-      })
-  ).toEqual({
-    city: `Hamburg`,
-    offers: [mockCards[1], mockCards[2]],
-    citiesNames: [`Amsterdam`, `Hamburg`]
+it(`Reducer add hoveredId`, () => {
+  expect(reducer({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1
+  }, {type: Action.SET_HOVERED, payload: 2})).toEqual({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: 2
   });
 });
 
-it(`Reducer should change offer`, () => {
-  expect(
-      reducer({
-        city: getCities(mockCards)[0],
-        offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
-        citiesNames: getCities(mockCards)
-      },
-      {type: ActionType.GET_OFFER, payload: getOfferById(mockCards, 0)})
-  ).toEqual({
+it(`Reducer reset hoveredId`, () => {
+  expect(reducer({
     city: getCities(mockCards)[0],
-    offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
+    mockCards,
     citiesNames: getCities(mockCards),
-    offer: getOfferById(mockCards, 0)
+    hoveredId: -1
+  }, {type: Action.RESET_HOVERED})).toEqual({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1
   });
 });
 
-it(`Reducer should clear offer`, () => {
-  expect(reducer(
-      {
-        city: getCities(mockCards)[0],
-        offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
-        citiesNames: getCities(mockCards),
-        offer: getOfferById(mockCards, 0)
-      },
-      {type: ActionType.CLEAR_OFFER, payload: ``}
-  )
-  ).toEqual({
+it(`Reducer set new city`, () => {
+  expect(reducer({
     city: getCities(mockCards)[0],
-    offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
+    mockCards,
     citiesNames: getCities(mockCards),
-    offer: ``
+    hoveredId: -1,
+  }, {type: Action.SET_CITY, payload: `Barcelona`})).toEqual({
+    city: `Barcelona`,
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1
+  });
+});
+
+it(`Reducer set new filter`, () => {
+  expect(reducer({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1,
+    filterName: `popular`,
+  }, {type: Action.SET_FILTER, payload: `highToLow`})).toEqual({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1,
+    filterName: `highToLow`,
+  });
+});
+
+it(`Reset filter`, () => {
+  expect(reducer({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1,
+    filterName: `highToLow`,
+  }, {type: Action.RESET_FILTER})).toEqual({
+    city: getCities(mockCards)[0],
+    mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1,
+    filterName: `popular`,
   });
 });
