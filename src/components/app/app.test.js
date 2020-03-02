@@ -1,18 +1,20 @@
 import React from 'react';
-import App from './app.jsx';
+import App from './app';
 import {mockCards} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities, getOffersByCity} from "../../reducer";
+import {getCities} from "../../reducer";
 import {createStore} from "redux";
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 import {Provider} from 'react-redux';
 
 const initialState = {
   city: getCities(mockCards)[0],
-  offers: getOffersByCity(mockCards, getCities(mockCards)[0]),
-  citiesNames: getCities(mockCards)
+  offers: mockCards,
+  citiesNames: getCities(mockCards),
+  hoveredId: -1,
+  filterName: `popular`
 };
 const reducer = (state = initialState) => {
   return state;

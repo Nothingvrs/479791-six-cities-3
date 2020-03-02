@@ -33,8 +33,10 @@ exports[`App successfully rendered 1`] = `
   match={
     Object {
       "isExact": true,
-      "params": Object {},
-      "path": "/",
+      "params": Object {
+        "city": undefined,
+      },
+      "path": "/:city?",
       "url": "/",
     }
   }
@@ -177,6 +179,7 @@ exports[`App successfully rendered 1`] = `
               </span>
               <span
                 className="places__sorting-type"
+                onClick={[Function]}
                 tabIndex="0"
               >
                 Popular
@@ -191,28 +194,40 @@ exports[`App successfully rendered 1`] = `
                 </svg>
               </span>
               <ul
-                className="places__options places__options--custom places__options--opened"
+                className="places__options places__options--custom places__options--custom"
               >
                 <li
                   className="places__option places__option--active"
+                  data-test="test-filter-click"
+                  key="popular - 0"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Popular
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option false"
+                  data-test="test-filter-click"
+                  key="lowToHigh - 1"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: low to high
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option false"
+                  data-test="test-filter-click"
+                  key="highToLow - 2"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: high to low
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option false"
+                  data-test="test-filter-click"
+                  key="topRated - 3"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Top rated first
@@ -226,6 +241,8 @@ exports[`App successfully rendered 1`] = `
                 <article
                   className="cities__place-card place-card"
                   data-test="test-card-hover"
+                  onMouseLeave={[Function]}
+                  onMouseOver={[Function]}
                 >
                   <div
                     className="place-card__mark"
@@ -300,7 +317,7 @@ exports[`App successfully rendered 1`] = `
                         <span
                           style={
                             Object {
-                              "width": "80%",
+                              "width": "90%",
                             }
                           }
                         />
@@ -332,6 +349,8 @@ exports[`App successfully rendered 1`] = `
                 <article
                   className="cities__place-card place-card"
                   data-test="test-card-hover"
+                  onMouseLeave={[Function]}
+                  onMouseOver={[Function]}
                 >
                   <div
                     className="cities__image-wrapper place-card__image-wrapper"
@@ -399,7 +418,7 @@ exports[`App successfully rendered 1`] = `
                         <span
                           style={
                             Object {
-                              "width": "100%",
+                              "width": "90%",
                             }
                           }
                         />

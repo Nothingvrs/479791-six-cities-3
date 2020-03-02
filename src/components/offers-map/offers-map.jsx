@@ -32,26 +32,46 @@ class OffersMap extends PureComponent {
       })
       .addTo(this.map);
     this.layerGroup = leaflet.layerGroup().addTo(this.map);
-    this.props.cards.forEach((card) => leaflet.marker(card.addressCoords, {icon}).addTo(this.layerGroup));
+    this.props.cards.forEach((card) =>
+      leaflet.marker(card.addressCoords, {icon}).addTo(this.layerGroup)
+    );
   }
 
   componentDidUpdate() {
-    const icon = leaflet.icon({
+    const {hoveredId} = this.props;
+    const hoveredIcon = leaflet.icon({
+      iconUrl: `/img/pin-active.svg`,
+      iconSize: [30, 30]
+    });
+    let icon = leaflet.icon({
       iconUrl: `/img/pin.svg`,
       iconSize: [30, 30]
     });
     this.layerGroup.clearLayers();
-    this.markers = this.props.cards.forEach((card) => leaflet.marker(card.addressCoords, {icon}).addTo(this.layerGroup));
+    this.markers = this.props.cards.forEach((card) => {
+      let newIcon = icon;
+      if (card.id === hoveredId) {
+        newIcon = hoveredIcon;
+      }
+      return leaflet.marker(card.addressCoords, {icon: newIcon}).addTo(this.layerGroup);
+    });
   }
 
   render() {
-    return <section ref={this._mapDiv} className={`${this.props.nearPlace ? `property__map` : `cities__map`} map`} />;
+    return (
+      <section
+        ref={this._mapDiv}
+        className={`${this.props.nearPlace ? `property__map` : `cities__map`} map`}
+      />
+    );
   }
 }
 
 OffersMap.propTypes = {
   cards: PropTypes.arrayOf(cardPropTypes).isRequired,
-  nearPlace: PropTypes.bool
+  nearPlace: PropTypes.bool,
+  hoveredId: PropTypes.number.isRequired
 };
 
 export default OffersMap;
+

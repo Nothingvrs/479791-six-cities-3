@@ -5,6 +5,7 @@ Array [
   <article
     className="cities__place-card place-card"
     data-test="test-card-hover"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -80,7 +81,7 @@ Array [
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "90%",
               }
             }
           />
@@ -112,6 +113,7 @@ Array [
   <article
     className="cities__place-card place-card"
     data-test="test-card-hover"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -180,7 +182,7 @@ Array [
           <span
             style={
               Object {
-                "width": "0%",
+                "width": "90%",
               }
             }
           />
@@ -212,6 +214,7 @@ Array [
   <article
     className="cities__place-card place-card"
     data-test="test-card-hover"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -280,7 +283,7 @@ Array [
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "90%",
               }
             }
           />
@@ -312,6 +315,7 @@ Array [
   <article
     className="cities__place-card place-card"
     data-test="test-card-hover"
+    onMouseLeave={[Function]}
     onMouseOver={[Function]}
   >
     <div
@@ -380,7 +384,7 @@ Array [
           <span
             style={
               Object {
-                "width": "100%",
+                "width": "90%",
               }
             }
           />
