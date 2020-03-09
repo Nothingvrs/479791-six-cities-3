@@ -18,8 +18,8 @@ describe(`OfferCard e2e testing`, () => {
     const headerClickHandler = jest.fn();
     const app = setUp({
       card: mockCards[0],
-      onCardHover: hoverHandler,
-      onCardUnHover: cardUnHoverHandler,
+      onHover: hoverHandler,
+      onUnHover: cardUnHoverHandler,
       onHeaderClick: headerClickHandler
     });
 
@@ -38,13 +38,13 @@ describe(`OfferCard e2e testing`, () => {
     const cardUnHoverHandler = () => {};
     const app = setUp({
       card: mockCards[0],
-      onCardHover: hoverHandler,
-      onCardUnHover: cardUnHoverHandler,
+      onHover: hoverHandler,
+      onUnHover: cardUnHoverHandler,
       onHeaderClick: headerClickHandler
     });
 
     const card = findByTestAtr(app, `test-card-hover`);
-    card.simulate(`mouseover`);
+    card.simulate(`mouseenter`);
     expect(hoverHandler).toHaveBeenCalledTimes(1);
   });
 
@@ -54,8 +54,8 @@ describe(`OfferCard e2e testing`, () => {
     const cardUnHoverHandler = jest.fn();
     const app = setUp({
       card: mockCards[0],
-      onCardHover: hoverHandler,
-      onCardUnHover: cardUnHoverHandler,
+      onHover: hoverHandler,
+      onUnHover: cardUnHoverHandler,
       onHeaderClick: headerClickHandler
     });
 

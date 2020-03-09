@@ -8,7 +8,7 @@ Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 it(`Change filter click is working`, () => {
   const onChangeFilter = jest.fn();
-  const app = shallow(<OffersFilter onChangeFilter={onChangeFilter} onFilterReset={() => {}} filter = 'popular'/>);
+  const app = shallow(<OffersFilter onChangeFilter={onChangeFilter} filter='popular' onFilterOpen={() => {}} isOpen={false} onActiveFilterSet={() => {}}/>);
   const filters = findByTestAtr(app, `test-filter-click`);
 
   filters.forEach((filter) => filter.simulate(`click`));

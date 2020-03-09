@@ -4,10 +4,10 @@ import {cardPropTypes} from "../../utils/utils";
 
 const OfferCard = (props) => {
   const {name, type, imgs, price, isInBookmark, avgMark, isPremium, id} = props.card;
-  const {onHeaderClick, nearPlace, onCardHover, onCardUnHover} = props;
+  const {onHeaderClick, nearPlace, onHover, onUnHover} = props;
 
   return (
-    <article className= {`${nearPlace ? `near-places__card` : `cities__place-card`} place-card`} data-test = "test-card-hover" onMouseOver={() => onCardHover(id)} onMouseLeave = {onCardUnHover}>
+    <article className= {`${nearPlace ? `near-places__card` : `cities__place-card`} place-card`} data-test = "test-card-hover" onMouseEnter={() => onHover(id)} onMouseLeave = {onUnHover}>
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -58,8 +58,8 @@ OfferCard.propTypes = {
   card: cardPropTypes,
   onHeaderClick: PropTypes.func.isRequired,
   nearPlace: PropTypes.bool,
-  onCardHover: PropTypes.func.isRequired,
-  onCardUnHover: PropTypes.func.isRequired
+  onHover: PropTypes.func.isRequired,
+  onUnHover: PropTypes.func.isRequired
 };
 
 export default OfferCard;

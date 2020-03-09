@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OffersCities successfully rendered 1`] = `
+<li
+  className="locations__item"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  style={
+    Object {
+      "textShadow": "1px 0 0,.5px 0 0,-1px 0 0",
+    }
+  }
+>
+  <a
+    className="locations__item-link tabs__item tabs__item--active"
+    data-test="test-city-click"
+    href="Amsterdam"
+    onClick={[Function]}
+  >
+    <span>
+      Amsterdam
+    </span>
+  </a>
+</li>
+`;
