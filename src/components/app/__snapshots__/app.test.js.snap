@@ -33,10 +33,8 @@ exports[`App successfully rendered 1`] = `
   match={
     Object {
       "isExact": true,
-      "params": Object {
-        "city": undefined,
-      },
-      "path": "/:city?",
+      "params": Object {},
+      "path": "/",
       "url": "/",
     }
   }
@@ -115,10 +113,12 @@ exports[`App successfully rendered 1`] = `
           >
             <li
               className="locations__item"
-              key="Amsterdam - 0"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
             >
               <a
-                className="locations__item-link tabs__item"
+                className="locations__item-link tabs__item tabs__item--active"
                 data-test="test-city-click"
                 href="Amsterdam"
                 onClick={[Function]}
@@ -130,10 +130,12 @@ exports[`App successfully rendered 1`] = `
             </li>
             <li
               className="locations__item"
-              key="Hamburg - 1"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              style={Object {}}
             >
               <a
-                className="locations__item-link tabs__item"
+                className="locations__item-link tabs__item "
                 data-test="test-city-click"
                 href="Hamburg"
                 onClick={[Function]}
@@ -241,8 +243,8 @@ exports[`App successfully rendered 1`] = `
                 <article
                   className="cities__place-card place-card"
                   data-test="test-card-hover"
+                  onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
                 >
                   <div
                     className="place-card__mark"
@@ -349,8 +351,8 @@ exports[`App successfully rendered 1`] = `
                 <article
                   className="cities__place-card place-card"
                   data-test="test-card-hover"
+                  onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
-                  onMouseOver={[Function]}
                 >
                   <div
                     className="cities__image-wrapper place-card__image-wrapper"

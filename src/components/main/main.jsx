@@ -6,9 +6,11 @@ import {connect} from 'react-redux';
 import OffersCities from '../offers-cities/offers-cities.jsx';
 import OffersFilter from '../offers-filter/offers-filter.jsx';
 import {ActionCreator} from '../../reducer.jsx';
+import withFilter from "../../hocs/withFilters";
 
+const OffersWithFilter = withFilter(OffersFilter);
 const Main = (props) => {
-  const {cards, citiesNames, city, history, onCardHover, onCardUnHover, hoveredId, onChangeCity, filter, onChangeFilter, onFilterReset} = props;
+  const {cards, citiesNames, city, history, onCardHover, onCardUnHover, hoveredId, onChangeCity, filter, onChangeFilter} = props;
   const _cardHeaderClickHandler = (id) => {
     history.push(`/offer/${id}`);
   };
@@ -47,7 +49,7 @@ const Main = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <OffersCities citiesNames={citiesNames} onCityNameClick={onChangeCity} />
+            <OffersCities citiesNames={citiesNames} onCityNameClick={onChangeCity} activeCity = {city}/>
           </section>
         </div>
         <div className="cities">
@@ -57,7 +59,7 @@ const Main = (props) => {
               <b className="places__found">
                 {cards.length > 0 ? cards.length : 0} places to stay in {city}
               </b>
-              <OffersFilter filter = {filter} city = {city} onChangeFilter = {onChangeFilter} onFilterReset = {onFilterReset}/>
+              <OffersWithFilter filter = {filter} onChangeFilter = {onChangeFilter}/>
               <div className="cities__places-list places__list tabs__content">
                 <OffersList
                   cards={cards}
@@ -88,7 +90,6 @@ Main.propTypes = {
   onChangeCity: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   onChangeFilter: PropTypes.func.isRequired,
-  onFilterReset: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

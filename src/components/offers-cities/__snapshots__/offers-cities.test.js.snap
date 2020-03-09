@@ -6,9 +6,12 @@ exports[`OffersCities successfully rendered 1`] = `
 >
   <li
     className="locations__item"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
   >
     <a
-      className="locations__item-link tabs__item"
+      className="locations__item-link tabs__item tabs__item--active"
       data-test="test-city-click"
       href="Amsterdam"
       onClick={[Function]}
@@ -20,9 +23,12 @@ exports[`OffersCities successfully rendered 1`] = `
   </li>
   <li
     className="locations__item"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={Object {}}
   >
     <a
-      className="locations__item-link tabs__item"
+      className="locations__item-link tabs__item "
       data-test="test-city-click"
       href="Berlin"
       onClick={[Function]}

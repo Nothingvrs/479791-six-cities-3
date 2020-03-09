@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const FILTERS = {
@@ -8,65 +8,53 @@ const FILTERS = {
   topRated: `Top rated first`
 };
 
-class OffersFilter extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-    this._filterOpenHandler = this._filterOpenHandler.bind(this);
-  }
+const OffersFilter = (props) => {
 
-  _setActiveFilter(filter) {
-    this.setState((prevState) => ({isOpen: !prevState}));
-    this.props.onChangeFilter(filter);
-  }
+  const _setActiveFilterHandler = (filter) => {
+    props.onActiveFilterSet();
+    props.onChangeFilter(filter);
+  };
 
-  _filterOpenHandler() {
-    this.setState((prevState) => ({isOpen: !prevState.isOpen}));
-  }
-
-  _renderFilters() {
+  const _renderFilters = () => {
     return Object.keys(FILTERS).map((filter, index) => (
       <li
-        className={`places__option ${filter === this.props.filter && `places__option--active`}`}
+        className={`places__option ${filter === props.filter && `places__option--active`}`}
         tabIndex="0"
-        onClick={() => this._setActiveFilter(filter)}
+        onClick={() => _setActiveFilterHandler(filter)}
         key={`${filter} - ${index}`}
         data-test="test-filter-click"
       >
         {FILTERS[filter]}
       </li>
     ));
-  }
+  };
 
-  render() {
-    return (
-      <form className="places__sorting" action="#" method="get">
-        <span className="places__sorting-caption">Sort by</span>
-        <span className="places__sorting-type" tabIndex="0" onClick={this._filterOpenHandler}>
-          {FILTERS[this.props.filter]}
-          <svg className="places__sorting-arrow" width="7" height="4">
-            <use xlinkHref="#icon-arrow-select"></use>
-          </svg>
-        </span>
-        <ul
-          className={`places__options places__options--custom places__options--${
-            this.state.isOpen ? `opened` : `custom`
-          }`}
-        >
-          {this._renderFilters()}
-        </ul>
-      </form>
-    );
-  }
-}
+  return (
+    <form className="places__sorting" action="#" method="get">
+      <span className="places__sorting-caption">Sort by</span>
+      <span className="places__sorting-type" tabIndex="0" onClick={props.onFilterOpen}>
+        {FILTERS[props.filter]}
+        <svg className="places__sorting-arrow" width="7" height="4">
+          <use xlinkHref="#icon-arrow-select"></use>
+        </svg>
+      </span>
+      <ul
+        className={`places__options places__options--custom places__options--${
+          props.isOpen ? `opened` : `custom`
+        }`}
+      >
+        {_renderFilters()}
+      </ul>
+    </form>
+  );
+};
 
 OffersFilter.propTypes = {
   onChangeFilter: PropTypes.func.isRequired,
-  onFilterReset: PropTypes.func.isRequired,
-  city: PropTypes.string,
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.string.isRequired,
+  onActiveFilterSet: PropTypes.func.isRequired,
+  onFilterOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired
 };
 
 export default OffersFilter;
