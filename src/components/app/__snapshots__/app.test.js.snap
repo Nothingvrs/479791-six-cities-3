@@ -95,7 +95,7 @@ exports[`App successfully rendered 1`] = `
       </div>
     </header>
     <main
-      className="page__main page__main--index"
+      className="page__main page__main--index "
     >
       <h1
         className="visually-hidden"
@@ -152,7 +152,7 @@ exports[`App successfully rendered 1`] = `
         className="cities"
       >
         <div
-          className="cities__places-container container"
+          className="cities__places-container container "
         >
           <section
             className="cities__places places"
