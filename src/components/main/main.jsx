@@ -5,12 +5,24 @@ import OffersMap from '../offers-map/offers-map.jsx';
 import {connect} from 'react-redux';
 import OffersCities from '../offers-cities/offers-cities.jsx';
 import OffersFilter from '../offers-filter/offers-filter.jsx';
+import MainEmpty from '../main-empty/main-empty.jsx';
 import {ActionCreator} from '../../reducer.jsx';
-import withFilter from "../../hocs/withFilters";
+import withFilter from '../../hocs/withFilters.js';
 
 const OffersWithFilter = withFilter(OffersFilter);
 const Main = (props) => {
-  const {cards, citiesNames, city, history, onCardHover, onCardUnHover, hoveredId, onChangeCity, filter, onChangeFilter} = props;
+  const {
+    cards,
+    citiesNames,
+    city,
+    onCardHover,
+    onCardUnHover,
+    hoveredId,
+    onChangeCity,
+    filter,
+    onChangeFilter
+  } = props;
+  const history = props.history;
   const _cardHeaderClickHandler = (id) => {
     history.push(`/offer/${id}`);
   };
@@ -45,32 +57,48 @@ const Main = (props) => {
         </div>
       </header>
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${cards.length === 0 ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <OffersCities citiesNames={citiesNames} onCityNameClick={onChangeCity} activeCity = {city}/>
+            <OffersCities
+              citiesNames={citiesNames}
+              onCityNameClick={onChangeCity}
+              activeCity={city}
+            />
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">
-                {cards.length > 0 ? cards.length : 0} places to stay in {city}
-              </b>
-              <OffersWithFilter filter = {filter} onChangeFilter = {onChangeFilter}/>
-              <div className="cities__places-list places__list tabs__content">
-                <OffersList
-                  cards={cards}
-                  onHeaderClick={_cardHeaderClickHandler}
-                  onCardHover={onCardHover}
-                  onCardUnHover={onCardUnHover}
-                />
-              </div>
+          <div
+            className={`cities__places-container container ${
+              cards.length === 0 ? `cities__places-container--empty` : ``
+            }`}
+          >
+            <section
+              className={`${cards.length === 0 ? `cities__no-places` : `cities__places places`}`}
+            >
+              {cards.length === 0 ? (
+                <MainEmpty />
+              ) : (
+                <React.Fragment>
+                  <h2 className="visually-hidden">Places</h2>
+                  <b className="places__found">
+                    {cards.length > 0 ? cards.length : 0} places to stay in {city}
+                  </b>
+                  <OffersWithFilter filter={filter} onChangeFilter={onChangeFilter} />
+                  <div className="cities__places-list places__list tabs__content">
+                    <OffersList
+                      cards={cards}
+                      onHeaderClick={_cardHeaderClickHandler}
+                      onCardHover={onCardHover}
+                      onCardUnHover={onCardUnHover}
+                    />
+                  </div>
+                </React.Fragment>
+              )}
             </section>
             <div className="cities__right-section">
-              <OffersMap cards={cards} hoveredId={hoveredId} />
+              {cards.length > 0 && <OffersMap cards={cards} hoveredId={hoveredId} />}
             </div>
           </div>
         </div>
@@ -89,14 +117,13 @@ Main.propTypes = {
   hoveredId: PropTypes.number.isRequired,
   onChangeCity: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired,
+  onChangeFilter: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   const city = state.city;
   const filter = state.filterName;
   let cards = state.offers.filter((offer) => offer.city === city);
-
   switch (filter) {
     case `lowToHigh`:
       cards = cards.sort((card1, card2) => card1.price - card2.price);
