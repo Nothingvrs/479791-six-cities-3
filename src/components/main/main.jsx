@@ -6,8 +6,9 @@ import {connect} from 'react-redux';
 import OffersCities from '../offers-cities/offers-cities.jsx';
 import OffersFilter from '../offers-filter/offers-filter.jsx';
 import MainEmpty from '../main-empty/main-empty.jsx';
-import {ActionCreator} from '../../reducer.jsx';
-import withFilter from '../../hocs/withFilters.js';
+import {ActionCreator} from '../../reducer/reducer.jsx';
+import withFilter from '../../hocs/withFilters';
+import {getCards, getCitiesFromState, getCity, getFilter, getHoveredId} from "../../reducer/data/selectors";
 
 const OffersWithFilter = withFilter(OffersFilter);
 const Main = (props) => {
@@ -57,14 +58,18 @@ const Main = (props) => {
         </div>
       </header>
 
-      <main className={`page__main page__main--index ${cards.length === 0 ? `page__main--index-empty` : ``}`}>
+      <main
+        className={`page__main page__main--index ${
+          cards.length === 0 ? `page__main--index-empty` : ``
+        }`}
+      >
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <OffersCities
               citiesNames={citiesNames}
               onCityNameClick={onChangeCity}
-              activeCity={city}
+              activeCity={city ? city : {}}
             />
           </section>
         </div>
@@ -83,7 +88,7 @@ const Main = (props) => {
                 <React.Fragment>
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">
-                    {cards.length > 0 ? cards.length : 0} places to stay in {city}
+                    {cards.length > 0 ? cards.length : 0} places to stay in {city.name}
                   </b>
                   <OffersWithFilter filter={filter} onChangeFilter={onChangeFilter} />
                   <div className="cities__places-list places__list tabs__content">
@@ -98,20 +103,21 @@ const Main = (props) => {
               )}
             </section>
             <div className="cities__right-section">
-              {cards.length > 0 && <OffersMap cards={cards} hoveredId={hoveredId} />}
+              {cards.length > 0 && <OffersMap cards={cards} hoveredId={hoveredId} city = {city}/>}
             </div>
           </div>
         </div>
       </main>
     </div>
   );
+
 };
 
 Main.propTypes = {
   cards: PropTypes.array.isRequired,
   history: PropTypes.object,
-  citiesNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  city: PropTypes.string,
+  citiesNames: PropTypes.arrayOf(PropTypes.object),
+  city: PropTypes.object,
   onCardHover: PropTypes.func.isRequired,
   onCardUnHover: PropTypes.func.isRequired,
   hoveredId: PropTypes.number.isRequired,
@@ -121,27 +127,14 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const city = state.city;
-  const filter = state.filterName;
-  let cards = state.offers.filter((offer) => offer.city === city);
-  switch (filter) {
-    case `lowToHigh`:
-      cards = cards.sort((card1, card2) => card1.price - card2.price);
-      break;
-    case `highToLow`:
-      cards = cards.sort((card1, card2) => card2.price - card1.price);
-      break;
-    case `topRated`:
-      cards = cards.sort((card1, card2) => card2.avgMark - card1.avgMark);
-      break;
-  }
+
 
   return {
-    cards,
-    city,
-    citiesNames: state.citiesNames,
-    hoveredId: state.hoveredId,
-    filter
+    cards: getCards(state),
+    city: getCity(state),
+    citiesNames: getCitiesFromState(state),
+    hoveredId: getHoveredId(state),
+    filter: getFilter(state)
   };
 };
 

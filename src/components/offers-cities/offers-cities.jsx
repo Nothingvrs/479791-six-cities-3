@@ -9,9 +9,9 @@ const OffersCities = (props) => {
 
   return (
     <ul className="locations__list tabs__list">
-      {citiesNames.map((cityName, index) => (
+      {citiesNames && citiesNames.map((cityName, index) => (
         <OffersCityItemWithHover
-          key={`${cityName} - ${index}`}
+          key={`${cityName.name} - ${index}`}
           cityName={cityName}
           activeCity={activeCity}
           onCityNameClick={onCityNameClick}
@@ -22,9 +22,9 @@ const OffersCities = (props) => {
 };
 
 OffersCities.propTypes = {
-  citiesNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onCityNameClick: PropTypes.func.isRequired,
-  activeCity: PropTypes.string.isRequired
+  citiesNames: PropTypes.arrayOf(PropTypes.object),
+  onCityNameClick: PropTypes.func,
+  activeCity: PropTypes.object
 };
 
 export default OffersCities;

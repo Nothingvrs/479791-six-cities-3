@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from './main';
+import Main from './main.jsx';
 import {mockCards} from '../../utils/test-mock';
 import Enzyme, {mount} from "enzyme";
 import EnzymeReactAdapter from "enzyme-adapter-react-16";
 import toJson from "enzyme-to-json";
-import {getCities} from "../../reducer";
+import {getCities} from "../../reducer/reducer";
 import {Provider} from 'react-redux';
 import {createStore} from "redux";
 import {BrowserRouter} from "react-router-dom";
