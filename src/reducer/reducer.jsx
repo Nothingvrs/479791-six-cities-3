@@ -1,9 +1,15 @@
-import offers from './mocks/offers';
+import {offerAdapter} from '../utils/utils';
 
 export const getCities = (initialOffers) => {
-  const cities = new Set();
-  initialOffers.forEach((offer) => cities.add(offer.city));
-  return [...cities];
+  const citiesNames = new Set();
+  const cities = [];
+  initialOffers.forEach((offer) => {
+    if (!citiesNames.has(offer.city.name)) {
+      citiesNames.add(offer.city.name);
+      cities.push(offer.city);
+    }
+  });
+  return cities;
 };
 
 export const Action = {
@@ -11,7 +17,8 @@ export const Action = {
   RESET_HOVERED: `reset-hovered`,
   SET_CITY: `set-city`,
   SET_FILTER: `set-filter`,
-  RESET_FILTER: `reset-filter`
+  RESET_FILTER: `reset-filter`,
+  GET_OFFERS: `get-offers`
 };
 
 export const ActionCreator = {
@@ -30,13 +37,19 @@ export const ActionCreator = {
   setCity(cityName) {
     return {type: Action.SET_CITY, payload: cityName};
   },
+  getOffersFromApi() {
+    return (dispatch, state, api) => {
+      api.get(`/hotels`).then((response) => {
+        dispatch({
+          type: Action.GET_OFFERS,
+          payload: response.data.map((offer) => offerAdapter(offer))
+        });
+      });
+    };
+  }
 };
 
-
 const initialState = {
-  city: getCities(offers)[0],
-  offers,
-  citiesNames: getCities(offers),
   filterName: `popular`,
   hoveredId: -1
 };
@@ -53,6 +66,13 @@ export const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {filterName: `popular`});
     case Action.SET_CITY:
       return Object.assign({}, state, {city: action.payload});
+    case Action.GET_OFFERS:
+      return Object.assign({}, state, {
+        offers: action.payload,
+        city: getCities(action.payload)[0],
+        citiesNames: getCities(action.payload),
+        isLoaded: true
+      });
   }
   return state;
 };

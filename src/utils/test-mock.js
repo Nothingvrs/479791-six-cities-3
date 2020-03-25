@@ -8,6 +8,7 @@ export const mockCards = [
     id: 0,
     name: `Beautiful & luxurious apartment at great location`,
     type: `Apartment`,
+    previewImg: `/img/apartment-01.jpg`,
     imgs: [
       `/img/apartment-01.jpg`,
       `/img/apartment-02.jpg`,
@@ -39,7 +40,7 @@ export const mockCards = [
     hostUser: {
       name: `Angelina`,
       img: `/img/avatar-angelina.jpg`,
-      status: `pro`
+      isPro: true
     },
     addressCoords: [52.3909553943508, 4.85309666406198],
     comments: [
@@ -61,12 +62,20 @@ export const mockCards = [
       }
     ],
     nearOffers: [1, 2, 3],
-    city: `Amsterdam`
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    }
   },
   {
     id: 1,
     name: `Wood and stone place`,
     type: `Private room`,
+    previewImg: `/img/apartment-01.jpg`,
     imgs: [
       `/img/room.jpg`,
       `/img/apartment-01.jpg`,
@@ -100,7 +109,7 @@ export const mockCards = [
     hostUser: {
       name: `Natalia`,
       img: `/img/avatar-angelina.jpg`,
-      status: `pro`
+      isPro: true
     },
     addressCoords: [52.369553943508, 4.85309666406198],
     comments: [
@@ -114,12 +123,20 @@ export const mockCards = [
       }
     ],
     nearOffers: [0, 2, 3],
-    city: `Hamburg`
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    }
   },
   {
     id: 2,
     name: `Canal View Prinsengracht`,
     type: `Apartment`,
+    previewImg: `/img/apartment-01.jpg`,
     imgs: [
       `/img/apartment-02.jpg`,
       `/img/apartment-01.jpg`,
@@ -155,7 +172,7 @@ export const mockCards = [
     hostUser: {
       name: `Olga`,
       img: `/img/avatar-angelina.jpg`,
-      status: `pro`
+      isPro: true
     },
     addressCoords: [52.3909553943508, 4.929309666406198],
     comments: [
@@ -177,12 +194,20 @@ export const mockCards = [
       }
     ],
     nearOffers: [0, 1, 3],
-    city: `Hamburg`
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    }
   },
   {
     id: 3,
     name: `Nice, cozy, warm big bed apartment`,
     type: `Apartment`,
+    previewImg: `/img/apartment-01.jpg`,
     imgs: [
       `/img/apartment-03.jpg`,
       `/img/apartment-01.jpg`,
@@ -219,7 +244,7 @@ export const mockCards = [
     hostUser: {
       name: `Natalia`,
       img: `/img/avatar-angelina.jpg`,
-      status: `standard`
+      isPro: true
     },
     addressCoords: [52.3809553943508, 4.939309666406198],
     comments: [
@@ -241,12 +266,33 @@ export const mockCards = [
       }
     ],
     nearOffers: [0, 1, 2],
-    city: `Amsterdam`
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    }
   }
 ];
 
 
-export const mockCities = [`Amsterdam`, `Berlin`];
+export const mockCities = [{
+  name: `Amsterdam`,
+  location: {
+    latitude: 52.37454,
+    longitude: 4.897976,
+    zoom: 13
+  }
+}, {
+  name: `Dusseldorf`,
+  location: {
+    latitude: 51.225402,
+    longitude: 6.776314,
+    zoom: 13
+  }
+}];
 
 export const findByTestAtr = (component, attr) => {
   return component.find(`[data-test='${attr}']`);

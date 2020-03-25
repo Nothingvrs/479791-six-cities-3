@@ -4,7 +4,7 @@ import {mockCards} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities} from '../../reducer';
+import {getCities} from '../../reducer/reducer';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import {BrowserRouter} from 'react-router-dom';
