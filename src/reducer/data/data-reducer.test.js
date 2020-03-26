@@ -1,8 +1,8 @@
-import {Action, getCities, reducer} from "./reducer";
-import {mockCards} from "../utils/test-mock";
+import {Action, getCities, dataReducer} from "./data-reducer";
+import {mockCards} from "../../utils/test-mock";
 
 it(`Reducer add hoveredId`, () => {
-  expect(reducer({
+  expect(dataReducer({
     city: getCities(mockCards)[0],
     mockCards,
     citiesNames: getCities(mockCards),
@@ -16,7 +16,7 @@ it(`Reducer add hoveredId`, () => {
 });
 
 it(`Reducer reset hoveredId`, () => {
-  expect(reducer({
+  expect(dataReducer({
     city: getCities(mockCards)[0],
     mockCards,
     citiesNames: getCities(mockCards),
@@ -30,7 +30,7 @@ it(`Reducer reset hoveredId`, () => {
 });
 
 it(`Reducer set new city`, () => {
-  expect(reducer({
+  expect(dataReducer({
     city: getCities(mockCards)[0],
     mockCards,
     citiesNames: getCities(mockCards),
@@ -44,7 +44,7 @@ it(`Reducer set new city`, () => {
 });
 
 it(`Reducer set new filter`, () => {
-  expect(reducer({
+  expect(dataReducer({
     city: getCities(mockCards)[0],
     mockCards,
     citiesNames: getCities(mockCards),
@@ -60,7 +60,7 @@ it(`Reducer set new filter`, () => {
 });
 
 it(`Reset filter`, () => {
-  expect(reducer({
+  expect(dataReducer({
     city: getCities(mockCards)[0],
     mockCards,
     citiesNames: getCities(mockCards),

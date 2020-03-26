@@ -6,9 +6,11 @@ import {connect} from 'react-redux';
 import OffersCities from '../offers-cities/offers-cities.jsx';
 import OffersFilter from '../offers-filter/offers-filter.jsx';
 import MainEmpty from '../main-empty/main-empty.jsx';
-import {ActionCreator} from '../../reducer/reducer.jsx';
+import {ActionCreator} from '../../reducer/data/data-reducer';
 import withFilter from '../../hocs/withFilters';
-import {getCards, getCitiesFromState, getCity, getFilter, getHoveredId} from "../../reducer/data/selectors";
+import {getCards, getCitiesFromState, getCity, getFilter, getHoveredId} from "../../reducer/data/data-selectors";
+import {getUserData} from "../../reducer/user/user-selector";
+import {Link} from "react-router-dom";
 
 const OffersWithFilter = withFilter(OffersFilter);
 const Main = (props) => {
@@ -21,7 +23,8 @@ const Main = (props) => {
     hoveredId,
     onChangeCity,
     filter,
-    onChangeFilter
+    onChangeFilter,
+    user
   } = props;
   const history = props.history;
   const _cardHeaderClickHandler = (id) => {
@@ -47,10 +50,10 @@ const Main = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link className="header__nav-link header__nav-link--profile" to='/login' >
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                    {user ? <span className="header__user-name user__name">{user.email}</span> : <span className="header__login">Sign in</span>}
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -123,18 +126,19 @@ Main.propTypes = {
   hoveredId: PropTypes.number.isRequired,
   onChangeCity: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
-  onChangeFilter: PropTypes.func.isRequired
+  onChangeFilter: PropTypes.func.isRequired,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
-
 
   return {
     cards: getCards(state),
     city: getCity(state),
     citiesNames: getCitiesFromState(state),
     hoveredId: getHoveredId(state),
-    filter: getFilter(state)
+    filter: getFilter(state),
+    user: getUserData(state)
   };
 };
 

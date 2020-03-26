@@ -1,16 +1,16 @@
 import {createSelector} from "reselect";
 
-export const getFilter = (state) => state.filterName;
-export const getCity = (state) => state.city;
-export const getOffers = (state) => state.offers;
+export const getFilter = (state) => state.data.filterName;
+export const getCity = (state) => state.data.city;
+export const getOffers = (state) => state.data.offers;
 
-export const getCitiesFromState = (state) => state.citiesNames;
+export const getCitiesFromState = (state) => state.data.citiesNames;
 
-export const getHoveredId = (state) => state.hoveredId;
+export const getHoveredId = (state) => state.data.hoveredId;
 
 export const getOfferId = (_, props) => props.match.params.id;
 
-export const getIsLoaded = (state) => state.isLoaded;
+export const getIsLoaded = (state) => state.data.isLoaded;
 
 export const getOfferById = createSelector([getOffers, getOfferId], (initialOffers, id) => {
   if (!initialOffers) {
