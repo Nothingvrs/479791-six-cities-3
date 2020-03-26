@@ -1,4 +1,4 @@
-import {offerAdapter} from '../../utils/utils';
+import {commentAdapter, offerAdapter} from '../../utils/utils';
 
 export const getCities = (initialOffers) => {
   const citiesNames = new Set();
@@ -18,7 +18,31 @@ export const Action = {
   SET_CITY: `set-city`,
   SET_FILTER: `set-filter`,
   RESET_FILTER: `reset-filter`,
-  GET_OFFERS: `get-offers`
+  GET_OFFERS: `get-offers`,
+  GET_COMMENTS: `get-comments`
+};
+
+export const DataOperation = {
+  getCommentsFromApi(id) {
+    return (dispatch, state, api) => {
+      api.get(`/comments/${id}`).then((response) => {
+        dispatch({
+          type: Action.GET_COMMENTS,
+          payload: response.data.map((comment) => commentAdapter(comment))
+        });
+      });
+    };
+  },
+  addCommentToApi(id, data) {
+    return (dispatch, state, api) => {
+      api.post(`/comments/${id}`, data).then((response) => {
+        dispatch({
+          type: Action.GET_COMMENTS,
+          payload: response.data.map((comment) => commentAdapter(comment))
+        });
+      }).catch(() => {});
+    };
+  }
 };
 
 export const ActionCreator = {
@@ -73,6 +97,8 @@ export const dataReducer = (state = initialState, action) => {
         citiesNames: getCities(action.payload),
         isLoaded: true
       });
+    case Action.GET_COMMENTS:
+      return Object.assign({}, state, {comments: action.payload});
   }
   return state;
 };

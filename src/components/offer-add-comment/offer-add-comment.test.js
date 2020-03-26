@@ -1,4 +1,4 @@
-import OfferCardDetails from './offer-card-details';
+import OfferAddComment from "./offer-add-comment";
 import React from 'react';
 import {mockCards, mockCities, userData} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
@@ -6,10 +6,10 @@ import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
 import {getCities} from '../../reducer/data/data-reducer';
 import {Provider} from 'react-redux';
-import {createStore, applyMiddleware} from 'redux';
-import {BrowserRouter} from 'react-router-dom';
-import thunk from 'redux-thunk';
-import {createApi} from "../../api";
+import {createStore} from 'redux';
+
+
+const mockComment = {mark: 3, comment: `Mock Comment`};
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
@@ -21,35 +21,23 @@ const initialState = {
     hoveredId: -1,
     filterName: `popular`
   },
-  userData
-
+  user: {
+    authorizationStatus: true,
+    userData
+  }
 };
 
 const reducer = (state = initialState) => {
   return state;
 };
-const api = createApi();
-const store = createStore(reducer, applyMiddleware(thunk.withExtraArgument(api)));
+const store = createStore(reducer);
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
-it(`OfferCardDetails successfully rendered`, () => {
-  const mockHistory = {push: jest.fn};
-  const mockMatch = {
-    params: {
-      id: 0
-    }
-  };
+it(`OfferAddComment successfully rendered`, () => {
   const tree = mount(
       <Provider store={store}>
-        <BrowserRouter>
-          <OfferCardDetails
-            card={mockCards[0]}
-            onHeaderClick={() => {}}
-            history={mockHistory}
-            match={mockMatch}
-          />
-        </BrowserRouter>
+        <OfferAddComment mark = {mockComment.mark} onMarkSet={() => {}} comment={mockComment.comment} isAuth id={0} addComment={() => {}} onCommentSet={() => {}} resetComments={() => {}}/>
       </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();

@@ -12,6 +12,8 @@ export const getOfferId = (_, props) => props.match.params.id;
 
 export const getIsLoaded = (state) => state.data.isLoaded;
 
+export const getCommentsFromState = (state) => state.data.comments;
+
 export const getOfferById = createSelector([getOffers, getOfferId], (initialOffers, id) => {
   if (!initialOffers) {
     return null;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferAddComment successfully rendered 1`] = `
+<Connect(OfferAddComment)
+  addComment={[Function]}
+  comment="Mock Comment"
+  id={0}
+  isAuth={true}
+  mark={3}
+  onCommentSet={[Function]}
+  onMarkSet={[Function]}
+  resetComments={[Function]}
+/>
+`;

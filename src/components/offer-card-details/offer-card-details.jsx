@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {cardPropTypes} from '../../utils/utils';
+import {cardPropTypes, commentShape, userShape} from '../../utils/utils';
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer/data/data-reducer';
-import OfferComments from "../offer-comments/offer-comments.jsx";
-import {getHoveredId, getIsLoaded, getOfferById} from "../../reducer/data/data-selectors";
+import {ActionCreator, DataOperation} from '../../reducer/data/data-reducer';
+import OfferComments from '../offer-comments/offer-comments.jsx';
+import {
+  getCommentsFromState,
+  getHoveredId,
+  getIsLoaded,
+  getOfferById
+} from '../../reducer/data/data-selectors';
+import {Link} from 'react-router-dom';
+import {getUserData} from '../../reducer/user/user-selector';
 
 const OfferCardDetail = (props) => {
   if (!props.card && props.isLoaded) {
@@ -15,13 +22,15 @@ const OfferCardDetail = (props) => {
   } else if (!props.card) {
     return null;
   }
+
+  const {comments, getComments, user} = props;
+
   const {
     name,
     type,
     imgs,
     price,
     isInBookmark,
-    mark,
     isPremium,
     bedroomNo,
     capacity,
@@ -29,10 +38,14 @@ const OfferCardDetail = (props) => {
     descriptions,
     avgMark,
     hostUser,
-    comments,
     nearOffers,
-    addressCoords
+    addressCoords,
+    id
   } = props.card;
+
+  useEffect(() => {
+    getComments(props.match.params.id);
+  }, []);
 
   const {onCardHover, onCardUnHover, hoveredId} = props;
 
@@ -70,10 +83,7 @@ const OfferCardDetail = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a
-                className="header__logo-link"
-                href="/"
-              >
+              <a className="header__logo-link" href="/">
                 <img
                   className="header__logo"
                   src="/img/logo.svg"
@@ -86,10 +96,14 @@ const OfferCardDetail = (props) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <Link className="header__nav-link header__nav-link--profile" to="/login">
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
+                    {user ? (
+                      <span className="header__user-name user__name">{user.email}</span>
+                    ) : (
+                      <span className="header__login">Sign in</span>
+                    )}
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -154,8 +168,9 @@ const OfferCardDetail = (props) => {
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div
-                    className={`property__avatar-wrapper ${hostUser.isPro ?
-                      `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}
+                    className={`property__avatar-wrapper ${
+                      hostUser.isPro ? `property__avatar-wrapper--pro` : ``
+                    } user__avatar-wrapper`}
                   >
                     <img
                       className="property__avatar user__avatar"
@@ -169,10 +184,15 @@ const OfferCardDetail = (props) => {
                 </div>
                 <div className="property__description">{_renderDescription(descriptions)}</div>
               </div>
-              <OfferComments comments = {comments} mark = {mark}/>
+              <OfferComments comments={comments} id={id} />
             </div>
           </div>
-          <OffersMap cards={nearOffers} nearPlace hoveredId={hoveredId} city={{location: {latitude: addressCoords[0], longitude: addressCoords[1], zoom: 13}}}/>
+          <OffersMap
+            cards={nearOffers}
+            nearPlace
+            hoveredId={hoveredId}
+            city={{location: {latitude: addressCoords[0], longitude: addressCoords[1], zoom: 13}}}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -200,15 +220,19 @@ OfferCardDetail.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   onCardUnHover: PropTypes.func.isRequired,
   hoveredId: PropTypes.number.isRequired,
-  isLoaded: PropTypes.bool
+  isLoaded: PropTypes.bool,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
+  user: PropTypes.shape(userShape),
+  getComments: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
-
   return {
     card: getOfferById(state, props),
     hoveredId: getHoveredId(state),
-    isLoaded: getIsLoaded(state)
+    isLoaded: getIsLoaded(state),
+    comments: getCommentsFromState(state),
+    user: getUserData(state)
   };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -217,6 +241,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onCardUnHover() {
     dispatch(ActionCreator.resetHovered());
+  },
+  getComments(id) {
+    dispatch(DataOperation.getCommentsFromApi(id));
   }
 });
 

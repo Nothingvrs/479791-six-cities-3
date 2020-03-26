@@ -1,3 +1,5 @@
+import {Authorization} from "./user-reducer";
+
 export const getUserData = (state) => {
   if (state.user) {
     return state.user.userData;
@@ -5,5 +7,7 @@ export const getUserData = (state) => {
   return null;
 };
 export const getAuthStatus = (state) => state.user.authorizationStatus;
+
+export const getIsAuth = (state) => getAuthStatus(state) === Authorization.AUTH;
 
 export const getErrorMsg = (state) => state.user.errorMsg;
