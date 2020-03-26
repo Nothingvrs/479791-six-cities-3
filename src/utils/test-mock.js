@@ -294,6 +294,19 @@ export const mockCities = [{
   }
 }];
 
+export const logInMockData = {
+  password: `123`,
+  email: `1513@123.ru`
+};
+
+export const userData = {
+  id: 1,
+  email: `laura@example.com`,
+  name: `laura`,
+  avatarUrl: `/static/avatar/7.jpg`,
+  isPro: false
+};
+
 export const findByTestAtr = (component, attr) => {
   return component.find(`[data-test='${attr}']`);
 };

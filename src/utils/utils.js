@@ -84,3 +84,11 @@ export const offerAdapter = (offer) => {
     city: offer.city
   };
 };
+
+export const userAdapter = (user) => ({
+  id: user.id,
+  email: user.email,
+  name: user.name,
+  img: user.avatar_url,
+  isPro: user.is_pro
+});
