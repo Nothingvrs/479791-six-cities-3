@@ -307,6 +307,14 @@ export const userData = {
   isPro: false
 };
 
+export const mockComment = {
+  id: 1,
+  comment: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+  mark: 4,
+  date: `2020-01-26T13:51:50.417Z`,
+  user: userData
+};
+
 export const findByTestAtr = (component, attr) => {
   return component.find(`[data-test='${attr}']`);
 };

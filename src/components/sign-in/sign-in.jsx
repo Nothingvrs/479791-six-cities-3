@@ -1,8 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import {getAuthStatus, getErrorMsg} from "../../reducer/user/user-selector";
+import {Authorization, UserOperation} from "../../reducer/user/user-reducer";
+import {getCity} from "../../reducer/data/data-selectors";
+import {connect} from "react-redux";
 
 const SignIn = (props) => {
-  const {onEmailChange, onPasswordChange, onFormSubmit, password, email, city, error} = props;
+  const {onEmailChange, onPasswordChange, password, email, city, error} = props;
+
+  useEffect(() => {
+    if (props.isAuth) {
+      props.history.push(`/`);
+    }
+  });
+  const formSubmitHandler = (evt) => {
+    evt.preventDefault();
+    const valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+    );
+
+    if (valid) {
+      props.login({email, password});
+    }
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -38,7 +58,7 @@ const SignIn = (props) => {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post" onSubmit={onFormSubmit} data-test='test-onSubmit-sign-in'>
+            <form className="login__form form" action="#" method="post" onSubmit={formSubmitHandler} >
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
@@ -49,6 +69,7 @@ const SignIn = (props) => {
                   required=""
                   value={email}
                   onChange={onEmailChange}
+                  data-test='test-email-sign-in'
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
@@ -61,6 +82,7 @@ const SignIn = (props) => {
                   required=""
                   value={password}
                   onChange={onPasswordChange}
+                  data-test='test-password-sign-in'
                 />
               </div>
               {error && <span style={{color: `red`, textAlign: `center`}}>Check Your Data!!!</span>}
@@ -88,8 +110,27 @@ SignIn.propTypes = {
   onFormSubmit: PropTypes.func,
   password: PropTypes.string,
   email: PropTypes.string,
+  isAuth: PropTypes.bool,
+  history: PropTypes.object,
   city: PropTypes.object,
+  login: PropTypes.func,
   error: PropTypes.string
 };
 
-export default SignIn;
+
+const mapStateToProps = (state) => {
+  return {
+    isAuth: getAuthStatus(state) === Authorization.AUTH,
+    city: getCity(state),
+    error: getErrorMsg(state)
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  login(data) {
+    dispatch(UserOperation.loginUser(data));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+

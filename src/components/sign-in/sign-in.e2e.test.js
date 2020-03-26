@@ -1,18 +1,79 @@
-import Enzyme, {shallow} from 'enzyme';
-import EnzymeReactAdapter from 'enzyme-adapter-react-16';
 import React from 'react';
+import {mockCards, mockCities, userData, logInMockData} from '../../utils/test-mock';
+import Enzyme, {mount} from 'enzyme';
+import EnzymeReactAdapter from 'enzyme-adapter-react-16';
+import {getCities} from '../../reducer/data/data-reducer';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import SignIn from './sign-in';
 import {findByTestAtr} from '../../utils/test-mock';
-import {mockCities, logInMockData} from '../../utils/test-mock';
-import SignIn from "./sign-in";
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
-it(`City click is working`, () => {
-  const onFormSubmit = jest.fn();
-  const app = shallow(<SignIn SignIn password={logInMockData.password} email={logInMockData.email} onEmailChange={() => {}} city={mockCities[0]} onFormSubmit={onFormSubmit} onPasswordChange={() => {}} />);
-  const singInForm = findByTestAtr(app, `test-onSubmit-sign-in`);
+const initialState = {
+  data: {
+    city: mockCities[0],
+    offers: mockCards,
+    citiesNames: getCities(mockCards),
+    hoveredId: -1,
+    filterName: `popular`
+  },
+  user: {
+    authorizationStatus: true,
+    userData
+  }
+};
 
-  singInForm.simulate(`submit`);
+const reducer = (state = initialState) => {
+  return state;
+};
+const store = createStore(reducer);
 
-  expect(onFormSubmit).toHaveBeenCalledTimes(1);
+
+it(`emailChange is working`, () => {
+  const mockHistory = {push: jest.fn};
+  const emailChangeHandler = jest.fn();
+  const app = mount(
+      <Provider store={store}>
+        <SignIn
+          password={logInMockData.password}
+          email={logInMockData.email}
+          onEmailChange={emailChangeHandler}
+          city={mockCities[0]}
+          onFormSubmit={() => {}}
+          onPasswordChange={() => {}}
+          history={mockHistory}
+        />
+      </Provider>
+  );
+  const emailField = findByTestAtr(app, `test-email-sign-in`);
+
+  emailField.simulate(`change`);
+
+  expect(emailChangeHandler).toHaveBeenCalledTimes(1);
 });
+
+
+it(`emailChange is working`, () => {
+  const mockHistory = {push: jest.fn};
+  const passwordChangeHandler = jest.fn();
+  const app = mount(
+      <Provider store={store}>
+        <SignIn
+          password={logInMockData.password}
+          email={logInMockData.email}
+          onEmailChange={() => {}}
+          city={mockCities[0]}
+          onFormSubmit={() => {}}
+          onPasswordChange={passwordChangeHandler}
+          history={mockHistory}
+        />
+      </Provider>
+  );
+  const passwordField = findByTestAtr(app, `test-password-sign-in`);
+
+  passwordField.simulate(`change`);
+
+  expect(passwordChangeHandler).toHaveBeenCalledTimes(1);
+});
+

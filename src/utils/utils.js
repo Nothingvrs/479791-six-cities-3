@@ -30,14 +30,23 @@ export const cardPropTypes = PropTypes.shape({
     isPro: PropTypes.bool.isRequired
   }).isRequired
 });
+export const userShape = {
+  id: PropTypes.number,
+  email: PropTypes.string,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  isPro: PropTypes.bool
+};
+
 
 export const commentShape = {
-  author: PropTypes.string.isRequired,
-  authorImg: PropTypes.string,
-  comment: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  comment: PropTypes.string,
   mark: PropTypes.number,
-  date: PropTypes.string.isRequired
+  date: PropTypes.string,
+  user: PropTypes.shape(userShape)
 };
+
 
 export const offerAdapter = (offer) => {
   return {
@@ -84,6 +93,14 @@ export const offerAdapter = (offer) => {
     city: offer.city
   };
 };
+
+export const commentAdapter = (comment) => ({
+  id: comment.id,
+  comment: comment.comment,
+  mark: comment.rating,
+  date: comment.date,
+  user: userAdapter(comment.user)
+});
 
 export const userAdapter = (user) => ({
   id: user.id,

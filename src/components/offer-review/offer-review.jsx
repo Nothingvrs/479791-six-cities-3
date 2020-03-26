@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from "moment";
 import PropTypes from 'prop-types';
+import {userShape} from "../../utils/utils";
 
 
 const formattedDate = (date) => {
@@ -9,7 +10,7 @@ const formattedDate = (date) => {
 
 const OfferReview = (props) => {
 
-  const {author, authorImg, comment, mark, date} = props;
+  const {user, comment, mark, date} = props;
 
   return (
     <li className="reviews__item">
@@ -17,13 +18,13 @@ const OfferReview = (props) => {
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
           <img
             className="reviews__avatar user__avatar"
-            src={authorImg}
+            src={user.img}
             width="54"
             height="54"
             alt="Reviews avatar"
           />
         </div>
-        <span className="reviews__user-name">{author}</span>
+        <span className="reviews__user-name">{user.name}</span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
@@ -45,11 +46,12 @@ const OfferReview = (props) => {
 };
 
 OfferReview.propTypes = {
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   authorImg: PropTypes.string,
-  comment: PropTypes.string.isRequired,
+  comment: PropTypes.string,
   mark: PropTypes.number,
-  date: PropTypes.string.isRequired
+  date: PropTypes.string,
+  user: PropTypes.shape(userShape)
 };
 
 export default OfferReview;
