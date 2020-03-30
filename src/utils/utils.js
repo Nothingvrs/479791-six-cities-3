@@ -109,3 +109,15 @@ export const userAdapter = (user) => ({
   img: user.avatar_url,
   isPro: user.is_pro
 });
+
+export const getCities = (initialOffers) => {
+  const citiesNames = new Set();
+  const cities = [];
+  initialOffers.forEach((offer) => {
+    if (!citiesNames.has(offer.city.name)) {
+      citiesNames.add(offer.city.name);
+      cities.push(offer.city);
+    }
+  });
+  return cities;
+};

@@ -8,7 +8,7 @@ import {commentShape} from "../../utils/utils";
 const AddOfferCommentWithForm = withForm(OfferAddComment);
 
 const OfferComments = (props) => {
-  const {comments} = props;
+  const {comments, isAuth} = props;
   if (!comments) {
     return null;
   }
@@ -22,7 +22,7 @@ const OfferComments = (props) => {
         </span>
       </h2>
       <OfferReviewList comments={comments} />
-      <AddOfferCommentWithForm id = {props.id}/>
+      {isAuth && <AddOfferCommentWithForm id = {props.id}/>}
     </section>
   );
 };
@@ -30,7 +30,8 @@ const OfferComments = (props) => {
 OfferComments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
   id: PropTypes.number,
-  mark: PropTypes.number
+  mark: PropTypes.number,
+  isAuth: PropTypes.bool
 };
 
 export default OfferComments;

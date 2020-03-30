@@ -4,26 +4,29 @@ import {cardPropTypes, commentShape, userShape} from '../../utils/utils';
 import OffersList from '../offers-list/offers-list.jsx';
 import OffersMap from '../offers-map/offers-map.jsx';
 import {connect} from 'react-redux';
-import {ActionCreator, DataOperation} from '../../reducer/data/data-reducer';
+import {DataOperation} from '../../reducer/data/data-reducer';
 import OfferComments from '../offer-comments/offer-comments.jsx';
 import {
   getCommentsFromState,
-  getHoveredId,
+  getHoveredId, getIsInBookmark,
   getIsLoaded,
-  getOfferById
+  getOfferById,
 } from '../../reducer/data/data-selectors';
 import {Link} from 'react-router-dom';
-import {getUserData} from '../../reducer/user/user-selector';
+import {getIsAuth, getUserData} from '../../reducer/user/user-selector';
 
 const OfferCardDetail = (props) => {
+  const {comments, onMount, user, isAuth, onSetFavorite, hoveredId} = props;
+  useEffect(() => {
+    onMount(props.match.params.id);
+  }, [props.match.params.id, onMount]);
+
   if (!props.card && props.isLoaded) {
     props.history.push(`/`);
     return null;
   } else if (!props.card) {
     return null;
   }
-
-  const {comments, getComments, user} = props;
 
   const {
     name,
@@ -42,12 +45,6 @@ const OfferCardDetail = (props) => {
     addressCoords,
     id
   } = props.card;
-
-  useEffect(() => {
-    getComments(props.match.params.id);
-  }, []);
-
-  const {onCardHover, onCardUnHover, hoveredId} = props;
 
   const _cardHeaderClickHandler = (newId) => {
     props.history.push(`/offer/${newId}`);
@@ -83,7 +80,7 @@ const OfferCardDetail = (props) => {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="/">
+              <Link to="/" className="header__logo-link">
                 <img
                   className="header__logo"
                   src="/img/logo.svg"
@@ -91,18 +88,14 @@ const OfferCardDetail = (props) => {
                   width="81"
                   height="41"
                 />
-              </a>
+              </Link>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <Link className="header__nav-link header__nav-link--profile" to="/login">
+                  <Link className="header__nav-link header__nav-link--profile" to={`${user ? `/favorite` : `/login`}`} >
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    {user ? (
-                      <span className="header__user-name user__name">{user.email}</span>
-                    ) : (
-                      <span className="header__login">Sign in</span>
-                    )}
+                    {user ? <span className="header__user-name user__name">{user.email}</span> : <span className="header__login">Sign in</span>}
                   </Link>
                 </li>
               </ul>
@@ -133,6 +126,7 @@ const OfferCardDetail = (props) => {
                   className={`property__bookmark-button button ${isInBookmark &&
                   `property__bookmark-button--active`}`}
                   type="button"
+                  onClick={() => onSetFavorite(id, !isInBookmark ? 1 : 0)}
                 >
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -184,7 +178,7 @@ const OfferCardDetail = (props) => {
                 </div>
                 <div className="property__description">{_renderDescription(descriptions)}</div>
               </div>
-              <OfferComments comments={comments} id={id} />
+              <OfferComments comments={comments} id={id} isAuth = {isAuth}/>
             </div>
           </div>
           <OffersMap
@@ -201,8 +195,6 @@ const OfferCardDetail = (props) => {
               <OffersList
                 cards={nearOffers}
                 nearPlace
-                onCardHover={onCardHover}
-                onCardUnHover={onCardUnHover}
                 onHeaderClick={_cardHeaderClickHandler}
               />
             </div>
@@ -217,13 +209,13 @@ OfferCardDetail.propTypes = {
   card: cardPropTypes,
   history: PropTypes.object,
   match: PropTypes.object,
-  onCardHover: PropTypes.func.isRequired,
-  onCardUnHover: PropTypes.func.isRequired,
   hoveredId: PropTypes.number.isRequired,
   isLoaded: PropTypes.bool,
   comments: PropTypes.arrayOf(PropTypes.shape(commentShape)),
   user: PropTypes.shape(userShape),
-  getComments: PropTypes.func
+  onMount: PropTypes.func,
+  isAuth: PropTypes.bool,
+  onSetFavorite: PropTypes.func
 };
 
 const mapStateToProps = (state, props) => {
@@ -232,18 +224,17 @@ const mapStateToProps = (state, props) => {
     hoveredId: getHoveredId(state),
     isLoaded: getIsLoaded(state),
     comments: getCommentsFromState(state),
-    user: getUserData(state)
+    user: getUserData(state),
+    isAuth: getIsAuth(state),
+    isInBookmark: getIsInBookmark(state, props)
   };
 };
 const mapDispatchToProps = (dispatch) => ({
-  onCardHover(id) {
-    dispatch(ActionCreator.setHovered(id));
+  onMount(id) {
+    dispatch(DataOperation.loadComments(id));
   },
-  onCardUnHover() {
-    dispatch(ActionCreator.resetHovered());
-  },
-  getComments(id) {
-    dispatch(DataOperation.getCommentsFromApi(id));
+  onSetFavorite(offerId, status) {
+    dispatch(DataOperation.addToFavoriteOffer(offerId, status));
   }
 });
 

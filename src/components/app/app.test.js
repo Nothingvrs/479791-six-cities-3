@@ -4,7 +4,7 @@ import {mockCards, mockCities, userData} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities} from "../../reducer/data/data-reducer.js";
+import {getCities} from "../../utils/utils";
 import {createStore} from "redux";
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 import {Provider} from 'react-redux';
