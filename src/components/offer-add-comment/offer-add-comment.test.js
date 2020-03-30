@@ -4,14 +4,12 @@ import {mockCards, mockCities, userData} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities} from '../../reducer/data/data-reducer';
+import {getCities} from '../../utils/utils';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
 
 const mockComment = {mark: 3, comment: `Mock Comment`};
-
-Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 const initialState = {
   data: {

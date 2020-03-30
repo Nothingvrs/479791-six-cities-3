@@ -38,7 +38,8 @@ export const UserOperation = {
           dispatch(UserActionCreator.setAuthStatus(Authorization.NO_AUTH));
         });
     };
-  }
+  },
+
 };
 
 export const UserActionCreator = {
@@ -65,11 +66,12 @@ export const userReducer = (state = initialState, action) => {
     case Action.AUTH_USER:
       return Object.assign({}, state, {
         authorizationStatus: action.payload.authStatus,
-        userData: action.payload.userData
+        userData: action.payload.userData,
+        isResponseReceived: true,
       });
     case Action.SET_ERR_MSG:
       return Object.assign({}, state, {errorMsg: action.payload});
+
   }
   return state;
 };
-

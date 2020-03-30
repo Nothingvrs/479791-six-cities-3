@@ -3,7 +3,7 @@ import React from 'react';
 import {mockCards, mockCities, userData, findByTestAtr} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities} from '../../reducer/data/data-reducer';
+import {getCities} from '../../utils/utils';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import {Authorization} from "../../reducer/user/user-reducer";

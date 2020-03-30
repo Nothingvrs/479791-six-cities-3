@@ -107,18 +107,30 @@ exports[`OfferCardDetails successfully rendered 1`] = `
           <div
             className="header__left"
           >
-            <a
+            <Link
               className="header__logo-link"
-              href="/"
+              to="/"
             >
-              <img
-                alt="6 cities logo"
-                className="header__logo"
-                height="41"
-                src="/img/logo.svg"
-                width="81"
-              />
-            </a>
+              <LinkAnchor
+                className="header__logo-link"
+                href="/"
+                navigate={[Function]}
+              >
+                <a
+                  className="header__logo-link"
+                  href="/"
+                  onClick={[Function]}
+                >
+                  <img
+                    alt="6 cities logo"
+                    className="header__logo"
+                    height="41"
+                    src="/img/logo.svg"
+                    width="81"
+                  />
+                </a>
+              </LinkAnchor>
+            </Link>
           </div>
           <nav
             className="header__nav"
@@ -247,6 +259,7 @@ exports[`OfferCardDetails successfully rendered 1`] = `
               </h1>
               <button
                 className="property__bookmark-button button property__bookmark-button--active"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -449,309 +462,567 @@ exports[`OfferCardDetails successfully rendered 1`] = `
             className="near-places__list places__list"
           >
             Array [
-              <article
-                className="near-places__card place-card"
-                data-test="test-card-hover"
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
+              <Connect(OfferCard)
+                card={
+                  Object {
+                    "addressCoords": Array [
+                      52.369553943508,
+                      4.85309666406198,
+                    ],
+                    "avgMark": 4.5,
+                    "bedroomNo": 3,
+                    "capacity": 4,
+                    "city": Object {
+                      "location": Object {
+                        "latitude": 52.37454,
+                        "longitude": 4.897976,
+                        "zoom": 13,
+                      },
+                      "name": "Amsterdam",
+                    },
+                    "comments": Array [
+                      Object {
+                        "author": "Max",
+                        "authorImg": "/img/avatar-max.jpg",
+                        "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                        "date": "2020-01-26T13:51:50.417Z",
+                        "id": 2,
+                        "mark": 4,
+                      },
+                    ],
+                    "descriptions": Array [
+                      "An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.",
+                    ],
+                    "facilities": Array [
+                      "Wi-Fi",
+                      "Heating",
+                      "Kitchen",
+                      "Fridge",
+                      "Washing machine",
+                      "Coffee machine",
+                      "Dishwasher",
+                      "Towels",
+                      "Baby seat",
+                    ],
+                    "hostUser": Object {
+                      "img": "/img/avatar-angelina.jpg",
+                      "isPro": true,
+                      "name": "Natalia",
+                    },
+                    "id": 1,
+                    "imgs": Array [
+                      "/img/room.jpg",
+                      "/img/apartment-01.jpg",
+                      "/img/apartment-02.jpg",
+                      "/img/apartment-03.jpg",
+                      "/img/studio-01.jpg",
+                      "/img/room.jpg",
+                    ],
+                    "isInBookmark": true,
+                    "isPremium": false,
+                    "mark": 0,
+                    "name": "Wood and stone place",
+                    "nearOffers": Array [
+                      0,
+                      2,
+                      3,
+                    ],
+                    "previewImg": "/img/apartment-01.jpg",
+                    "price": 80,
+                    "reviews": 2,
+                    "type": "Private room",
+                  }
+                }
+                hovered={false}
+                nearPlace={true}
+                onHeaderClick={[Function]}
+                onHover={[Function]}
+                onUnHover={[Function]}
               >
-                <div
-                  className="near-places__image-wrapper place-card__image-wrapper"
-                >
-                  <a
-                    href="#"
-                  >
-                    <img
-                      alt="Place image"
-                      className="place-card__image"
-                      height="200"
-                      src="/img/apartment-01.jpg"
-                      width="260"
-                    />
-                  </a>
-                </div>
-                <div
-                  className="place-card__info"
+                <article
+                  className="near-places__card  place-card"
+                  data-test="test-card-hover"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
                 >
                   <div
-                    className="place-card__price-wrapper"
-                  >
-                    <div
-                      className="place-card__price"
-                    >
-                      <b
-                        className="place-card__price-value"
-                      >
-                        €
-                        80
-                      </b>
-                      <span
-                        className="place-card__price-text"
-                      >
-                        / night
-                      </span>
-                    </div>
-                    <button
-                      className="place-card__bookmark-button button place-card__bookmark-button--active"
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        height="19"
-                        width="18"
-                      >
-                        <use
-                          xlinkHref="#icon-bookmark"
-                        />
-                      </svg>
-                      <span
-                        className="visually-hidden"
-                      >
-                        In
-                         bookmarks
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    className="place-card__rating rating"
-                  >
-                    <div
-                      className="place-card__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "90%",
-                          }
-                        }
-                      />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
-                  </div>
-                  <h2
-                    className="place-card__name"
+                    className="near-places__image-wrapper  place-card__image-wrapper"
                   >
                     <a
-                      data-test="test-header-click"
                       href="#"
-                      onClick={[Function]}
                     >
-                      Wood and stone place
-                    </a>
-                  </h2>
-                  <p
-                    className="place-card__type"
-                  >
-                    Private room
-                  </p>
-                </div>
-              </article>,
-              <article
-                className="near-places__card place-card"
-                data-test="test-card-hover"
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="near-places__image-wrapper place-card__image-wrapper"
-                >
-                  <a
-                    href="#"
-                  >
-                    <img
-                      alt="Place image"
-                      className="place-card__image"
-                      height="200"
-                      src="/img/apartment-01.jpg"
-                      width="260"
-                    />
-                  </a>
-                </div>
-                <div
-                  className="place-card__info"
-                >
-                  <div
-                    className="place-card__price-wrapper"
-                  >
-                    <div
-                      className="place-card__price"
-                    >
-                      <b
-                        className="place-card__price-value"
-                      >
-                        €
-                        132
-                      </b>
-                      <span
-                        className="place-card__price-text"
-                      >
-                        / night
-                      </span>
-                    </div>
-                    <button
-                      className="place-card__bookmark-button button false"
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        height="19"
-                        width="18"
-                      >
-                        <use
-                          xlinkHref="#icon-bookmark"
-                        />
-                      </svg>
-                      <span
-                        className="visually-hidden"
-                      >
-                        To
-                         bookmarks
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    className="place-card__rating rating"
-                  >
-                    <div
-                      className="place-card__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "90%",
-                          }
-                        }
+                      <img
+                        alt="Place image"
+                        className="place-card__image"
+                        height="200"
+                        src="/img/apartment-01.jpg"
+                        width="260"
                       />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
+                    </a>
                   </div>
-                  <h2
-                    className="place-card__name"
+                  <div
+                    className=" place-card__info"
+                  >
+                    <div
+                      className="place-card__price-wrapper"
+                    >
+                      <div
+                        className="place-card__price"
+                      >
+                        <b
+                          className="place-card__price-value"
+                        >
+                          €
+                          80
+                        </b>
+                        <span
+                          className="place-card__price-text"
+                        >
+                          / night
+                        </span>
+                      </div>
+                      <button
+                        className="place-card__bookmark-button button place-card__bookmark-button--active"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <svg
+                          className="place-card__bookmark-icon"
+                          height="19"
+                          width="18"
+                        >
+                          <use
+                            xlinkHref="#icon-bookmark"
+                          />
+                        </svg>
+                        <span
+                          className="visually-hidden"
+                        >
+                          In
+                           bookmarks
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="place-card__rating rating"
+                    >
+                      <div
+                        className="place-card__stars rating__stars"
+                      >
+                        <span
+                          style={
+                            Object {
+                              "width": "90%",
+                            }
+                          }
+                        />
+                        <span
+                          className="visually-hidden"
+                        >
+                          Rating
+                        </span>
+                      </div>
+                    </div>
+                    <h2
+                      className="place-card__name"
+                    >
+                      <a
+                        data-test="test-header-click"
+                        href="#"
+                        onClick={[Function]}
+                      >
+                        Wood and stone place
+                      </a>
+                    </h2>
+                    <p
+                      className="place-card__type"
+                    >
+                      Private room
+                    </p>
+                  </div>
+                </article>
+              </Connect(OfferCard)>,
+              <Connect(OfferCard)
+                card={
+                  Object {
+                    "addressCoords": Array [
+                      52.3909553943508,
+                      4.929309666406198,
+                    ],
+                    "avgMark": 4.5,
+                    "bedroomNo": 3,
+                    "capacity": 4,
+                    "city": Object {
+                      "location": Object {
+                        "latitude": 52.37454,
+                        "longitude": 4.897976,
+                        "zoom": 13,
+                      },
+                      "name": "Amsterdam",
+                    },
+                    "comments": Array [
+                      Object {
+                        "author": "Max",
+                        "authorImg": "/img/avatar-max.jpg",
+                        "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                        "date": "2020-01-26T13:51:50.417Z",
+                        "id": 1,
+                        "mark": 4,
+                      },
+                      Object {
+                        "author": "Max",
+                        "authorImg": "/img/avatar-max.jpg",
+                        "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                        "date": "2020-01-26T13:51:50.417Z",
+                        "id": 2,
+                        "mark": 4,
+                      },
+                    ],
+                    "descriptions": Array [
+                      "Chalets Alpins- 15 Chemin des Skieurs is located in Stoneham, 9.7 km from Les Marais du Nord, 9.7 km from Camping Stoneham, as well as 19.3 km from Nordique Spa Stoneham. The air-conditioned accommodation is an 8-minute walk from Halte O Spa, and guests benefit from private parking available on site and free WiFi.",
+                      "Aventures Nord-Bec is 24.1 km from the chalet, while Jacques-Cartier National Park is 48.3 km from the property. The nearest airport is Québec City Jean Lesage International Airport, 40.2 km from Chalets Alpins- 15.",
+                    ],
+                    "facilities": Array [
+                      "Wi-Fi",
+                      "Heating",
+                      "Kitchen",
+                      "Fridge",
+                      "Washing machine",
+                      "Coffee machine",
+                      "Dishwasher",
+                      "Towels",
+                      "Baby seat",
+                      "Cabel TV",
+                    ],
+                    "hostUser": Object {
+                      "img": "/img/avatar-angelina.jpg",
+                      "isPro": true,
+                      "name": "Olga",
+                    },
+                    "id": 2,
+                    "imgs": Array [
+                      "/img/apartment-02.jpg",
+                      "/img/apartment-01.jpg",
+                      "/img/apartment-02.jpg",
+                      "/img/apartment-03.jpg",
+                      "/img/studio-01.jpg",
+                      "/img/room.jpg",
+                    ],
+                    "isInBookmark": false,
+                    "isPremium": false,
+                    "mark": 4,
+                    "name": "Canal View Prinsengracht",
+                    "nearOffers": Array [
+                      0,
+                      1,
+                      3,
+                    ],
+                    "previewImg": "/img/apartment-01.jpg",
+                    "price": 132,
+                    "reviews": 2,
+                    "type": "Apartment",
+                  }
+                }
+                hovered={false}
+                nearPlace={true}
+                onHeaderClick={[Function]}
+                onHover={[Function]}
+                onUnHover={[Function]}
+              >
+                <article
+                  className="near-places__card  place-card"
+                  data-test="test-card-hover"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <div
+                    className="near-places__image-wrapper  place-card__image-wrapper"
                   >
                     <a
-                      data-test="test-header-click"
                       href="#"
-                      onClick={[Function]}
                     >
-                      Canal View Prinsengracht
-                    </a>
-                  </h2>
-                  <p
-                    className="place-card__type"
-                  >
-                    Apartment
-                  </p>
-                </div>
-              </article>,
-              <article
-                className="near-places__card place-card"
-                data-test="test-card-hover"
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
-              >
-                <div
-                  className="near-places__image-wrapper place-card__image-wrapper"
-                >
-                  <a
-                    href="#"
-                  >
-                    <img
-                      alt="Place image"
-                      className="place-card__image"
-                      height="200"
-                      src="/img/apartment-01.jpg"
-                      width="260"
-                    />
-                  </a>
-                </div>
-                <div
-                  className="place-card__info"
-                >
-                  <div
-                    className="place-card__price-wrapper"
-                  >
-                    <div
-                      className="place-card__price"
-                    >
-                      <b
-                        className="place-card__price-value"
-                      >
-                        €
-                        180
-                      </b>
-                      <span
-                        className="place-card__price-text"
-                      >
-                        / night
-                      </span>
-                    </div>
-                    <button
-                      className="place-card__bookmark-button button false"
-                      type="button"
-                    >
-                      <svg
-                        className="place-card__bookmark-icon"
-                        height="19"
-                        width="18"
-                      >
-                        <use
-                          xlinkHref="#icon-bookmark"
-                        />
-                      </svg>
-                      <span
-                        className="visually-hidden"
-                      >
-                        To
-                         bookmarks
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    className="place-card__rating rating"
-                  >
-                    <div
-                      className="place-card__stars rating__stars"
-                    >
-                      <span
-                        style={
-                          Object {
-                            "width": "90%",
-                          }
-                        }
+                      <img
+                        alt="Place image"
+                        className="place-card__image"
+                        height="200"
+                        src="/img/apartment-01.jpg"
+                        width="260"
                       />
-                      <span
-                        className="visually-hidden"
-                      >
-                        Rating
-                      </span>
-                    </div>
+                    </a>
                   </div>
-                  <h2
-                    className="place-card__name"
+                  <div
+                    className=" place-card__info"
+                  >
+                    <div
+                      className="place-card__price-wrapper"
+                    >
+                      <div
+                        className="place-card__price"
+                      >
+                        <b
+                          className="place-card__price-value"
+                        >
+                          €
+                          132
+                        </b>
+                        <span
+                          className="place-card__price-text"
+                        >
+                          / night
+                        </span>
+                      </div>
+                      <button
+                        className="place-card__bookmark-button button false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <svg
+                          className="place-card__bookmark-icon"
+                          height="19"
+                          width="18"
+                        >
+                          <use
+                            xlinkHref="#icon-bookmark"
+                          />
+                        </svg>
+                        <span
+                          className="visually-hidden"
+                        >
+                          To
+                           bookmarks
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="place-card__rating rating"
+                    >
+                      <div
+                        className="place-card__stars rating__stars"
+                      >
+                        <span
+                          style={
+                            Object {
+                              "width": "90%",
+                            }
+                          }
+                        />
+                        <span
+                          className="visually-hidden"
+                        >
+                          Rating
+                        </span>
+                      </div>
+                    </div>
+                    <h2
+                      className="place-card__name"
+                    >
+                      <a
+                        data-test="test-header-click"
+                        href="#"
+                        onClick={[Function]}
+                      >
+                        Canal View Prinsengracht
+                      </a>
+                    </h2>
+                    <p
+                      className="place-card__type"
+                    >
+                      Apartment
+                    </p>
+                  </div>
+                </article>
+              </Connect(OfferCard)>,
+              <Connect(OfferCard)
+                card={
+                  Object {
+                    "addressCoords": Array [
+                      52.3809553943508,
+                      4.939309666406198,
+                    ],
+                    "avgMark": 4.5,
+                    "bedroomNo": 3,
+                    "capacity": 4,
+                    "city": Object {
+                      "location": Object {
+                        "latitude": 52.37454,
+                        "longitude": 4.897976,
+                        "zoom": 13,
+                      },
+                      "name": "Amsterdam",
+                    },
+                    "comments": Array [
+                      Object {
+                        "author": "Alex",
+                        "authorImg": "/img/avatar-max.jpg",
+                        "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                        "date": "2020-03-26T13:51:50.417Z",
+                        "id": 1,
+                        "mark": 1,
+                      },
+                      Object {
+                        "author": "Max",
+                        "authorImg": "/img/avatar-max.jpg",
+                        "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                        "date": "2020-01-26T13:51:50.417Z",
+                        "id": 2,
+                        "mark": 4,
+                      },
+                    ],
+                    "descriptions": Array [
+                      "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
+                      "An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.",
+                      "The chalet features 5 separate bedrooms, 1 bathroom, a fully equipped kitchen with a dining area and dishwasher, and a living room with a TV.",
+                    ],
+                    "facilities": Array [
+                      "Wi-Fi",
+                      "Heating",
+                      "Kitchen",
+                      "Fridge",
+                      "Washing machine",
+                      "Coffee machine",
+                      "Dishwasher",
+                      "Towels",
+                      "Baby seat",
+                      "Cabel TV",
+                    ],
+                    "hostUser": Object {
+                      "img": "/img/avatar-angelina.jpg",
+                      "isPro": true,
+                      "name": "Natalia",
+                    },
+                    "id": 3,
+                    "imgs": Array [
+                      "/img/apartment-03.jpg",
+                      "/img/apartment-01.jpg",
+                      "/img/apartment-02.jpg",
+                      "/img/apartment-03.jpg",
+                      "/img/studio-01.jpg",
+                      "/img/room.jpg",
+                    ],
+                    "isInBookmark": false,
+                    "isPremium": false,
+                    "mark": 5,
+                    "name": "Nice, cozy, warm big bed apartment",
+                    "nearOffers": Array [
+                      0,
+                      1,
+                      2,
+                    ],
+                    "previewImg": "/img/apartment-01.jpg",
+                    "price": 180,
+                    "reviews": 2,
+                    "type": "Apartment",
+                  }
+                }
+                hovered={false}
+                nearPlace={true}
+                onHeaderClick={[Function]}
+                onHover={[Function]}
+                onUnHover={[Function]}
+              >
+                <article
+                  className="near-places__card  place-card"
+                  data-test="test-card-hover"
+                  onMouseEnter={[Function]}
+                  onMouseLeave={[Function]}
+                >
+                  <div
+                    className="near-places__image-wrapper  place-card__image-wrapper"
                   >
                     <a
-                      data-test="test-header-click"
                       href="#"
-                      onClick={[Function]}
                     >
-                      Nice, cozy, warm big bed apartment
+                      <img
+                        alt="Place image"
+                        className="place-card__image"
+                        height="200"
+                        src="/img/apartment-01.jpg"
+                        width="260"
+                      />
                     </a>
-                  </h2>
-                  <p
-                    className="place-card__type"
+                  </div>
+                  <div
+                    className=" place-card__info"
                   >
-                    Apartment
-                  </p>
-                </div>
-              </article>,
+                    <div
+                      className="place-card__price-wrapper"
+                    >
+                      <div
+                        className="place-card__price"
+                      >
+                        <b
+                          className="place-card__price-value"
+                        >
+                          €
+                          180
+                        </b>
+                        <span
+                          className="place-card__price-text"
+                        >
+                          / night
+                        </span>
+                      </div>
+                      <button
+                        className="place-card__bookmark-button button false"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <svg
+                          className="place-card__bookmark-icon"
+                          height="19"
+                          width="18"
+                        >
+                          <use
+                            xlinkHref="#icon-bookmark"
+                          />
+                        </svg>
+                        <span
+                          className="visually-hidden"
+                        >
+                          To
+                           bookmarks
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      className="place-card__rating rating"
+                    >
+                      <div
+                        className="place-card__stars rating__stars"
+                      >
+                        <span
+                          style={
+                            Object {
+                              "width": "90%",
+                            }
+                          }
+                        />
+                        <span
+                          className="visually-hidden"
+                        >
+                          Rating
+                        </span>
+                      </div>
+                    </div>
+                    <h2
+                      className="place-card__name"
+                    >
+                      <a
+                        data-test="test-header-click"
+                        href="#"
+                        onClick={[Function]}
+                      >
+                        Nice, cozy, warm big bed apartment
+                      </a>
+                    </h2>
+                    <p
+                      className="place-card__type"
+                    >
+                      Apartment
+                    </p>
+                  </div>
+                </article>
+              </Connect(OfferCard)>,
             ]
           </div>
         </section>

@@ -78,18 +78,5 @@ exports[`OfferComments successfully rendered 1`] = `
       </div>
     </li>
   </ul>
-  <Connect(OfferAddComment)
-    comment=""
-    email=""
-    isValid={true}
-    mark={0}
-    onCommentSet={[Function]}
-    onEmailChange={[Function]}
-    onMarkSet={[Function]}
-    onPasswordChange={[Function]}
-    password=""
-    resetComments={[Function]}
-    validationSet={[Function]}
-  />
 </section>
 `;

@@ -1,5 +1,6 @@
-import {Action, getCities, dataReducer} from "./data-reducer";
+import {Action, dataReducer} from "./data-reducer";
 import {mockCards} from "../../utils/test-mock";
+import {getCities} from "../../utils/utils";
 
 it(`Reducer add hoveredId`, () => {
   expect(dataReducer({

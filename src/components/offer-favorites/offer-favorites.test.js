@@ -1,15 +1,15 @@
-import OfferCardDetails from './offer-card-details';
 import React from 'react';
 import {mockCards, mockCities, userData} from '../../utils/test-mock';
 import Enzyme, {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import EnzymeReactAdapter from 'enzyme-adapter-react-16';
-import {getCities} from '../../utils/utils';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import {BrowserRouter} from 'react-router-dom';
 import thunk from 'redux-thunk';
-import {createApi} from "../../api";
+import {createApi} from '../../api';
+import OffersFavorites from './offer-favorites.jsx';
+import {getCities} from "../../utils/utils";
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
@@ -22,7 +22,6 @@ const initialState = {
     filterName: `popular`
   },
   user: userData
-
 };
 
 const reducer = (state = initialState) => {
@@ -43,12 +42,7 @@ it(`OfferCardDetails successfully rendered`, () => {
   const tree = mount(
       <Provider store={store}>
         <BrowserRouter>
-          <OfferCardDetails
-            card={mockCards[0]}
-            onHeaderClick={() => {}}
-            history={mockHistory}
-            match={mockMatch}
-          />
+          <OffersFavorites history={mockHistory} match={mockMatch} />
         </BrowserRouter>
       </Provider>
   );
