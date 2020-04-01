@@ -1,6 +1,6 @@
 import * as React from 'react';
 import App from './app';
-import {getTestStore} from '../../utils/tests-utils';
+import {getTestStore} from '../../utils/test-mock';
 import * as Enzyme from 'enzyme';
 import {mount} from 'enzyme';
 import toJson from 'enzyme-to-json';

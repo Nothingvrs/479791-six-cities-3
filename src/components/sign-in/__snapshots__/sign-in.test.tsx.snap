@@ -18,9 +18,9 @@ exports[`SignIn successfully rendered 1`] = `
       "push": [Function],
     }
   }
-  onEmailChange={[Function]}
-  onFormSubmit={[Function]}
-  onPasswordChange={[Function]}
+  onEmailChange={[MockFunction]}
+  onFormSubmit={[MockFunction]}
+  onPasswordChange={[MockFunction]}
   password="123"
 >
   <div
@@ -111,9 +111,9 @@ exports[`SignIn successfully rendered 1`] = `
                 className="login__input form__input"
                 data-test="test-email-sign-in"
                 name="email"
-                onChange={[Function]}
+                onChange={[MockFunction]}
                 placeholder="Email"
-                required=""
+                required={true}
                 type="email"
                 value="1513@123.ru"
               />
@@ -130,9 +130,9 @@ exports[`SignIn successfully rendered 1`] = `
                 className="login__input form__input"
                 data-test="test-password-sign-in"
                 name="password"
-                onChange={[Function]}
+                onChange={[MockFunction]}
                 placeholder="Password"
-                required=""
+                required={true}
                 type="password"
                 value="123"
               />

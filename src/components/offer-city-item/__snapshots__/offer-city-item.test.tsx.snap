@@ -3,8 +3,8 @@
 exports[`OffersCities successfully rendered 1`] = `
 <li
   className="locations__item"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  onMouseEnter={[MockFunction]}
+  onMouseLeave={[MockFunction]}
   style={
     Object {
       "textShadow": "1px 0 0,.5px 0 0,-1px 0 0",

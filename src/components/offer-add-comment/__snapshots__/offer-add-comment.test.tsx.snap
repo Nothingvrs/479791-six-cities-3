@@ -2,14 +2,14 @@
 
 exports[`OfferAddComment successfully rendered 1`] = `
 <Connect(OfferAddComment)
-  addComment={[Function]}
+  addComment={[MockFunction]}
   comment="Mock Comment"
   id={0}
   isAuth={true}
   mark={3}
-  onCommentSet={[Function]}
-  onMarkSet={[Function]}
-  resetComments={[Function]}
+  onCommentSet={[MockFunction]}
+  onMarkSet={[MockFunction]}
+  resetComments={[MockFunction]}
 >
   <form
     action="#"
@@ -152,7 +152,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       data-test="test-add-comment"
       id="review"
       name="review"
-      onChange={[Function]}
+      onChange={[MockFunction]}
       placeholder="Tell how was your stay, what you like and what can be improved"
       value="Mock Comment"
     />
@@ -189,7 +189,6 @@ exports[`OfferAddComment successfully rendered 1`] = `
       </span>
       <button
         className="reviews__submit form__submit button"
-        disabled={false}
         type="submit"
       >
         Submit

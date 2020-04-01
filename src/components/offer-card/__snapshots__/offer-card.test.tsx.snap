@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card successfully successfully rendered 1`] = `
+exports[`OfferCard successfully successfully rendered 1`] = `
 <Connect(withRouter(OfferCard))
   card={
     Object {
@@ -21,20 +21,30 @@ exports[`Card successfully successfully rendered 1`] = `
       },
       "comments": Array [
         Object {
-          "author": "Max",
-          "authorImg": "/img/avatar-max.jpg",
           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
           "date": "2020-01-26T13:51:50.417Z",
           "id": 1,
           "mark": 4,
+          "user": Object {
+            "email": "laura@example.com",
+            "id": 1,
+            "img": "/static/avatar/7.jpg",
+            "isPro": false,
+            "name": "laura",
+          },
         },
         Object {
-          "author": "Max",
-          "authorImg": "/img/avatar-max.jpg",
           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
           "date": "2020-01-26T13:51:50.417Z",
           "id": 2,
           "mark": 4,
+          "user": Object {
+            "email": "laura@example.com",
+            "id": 1,
+            "img": "/static/avatar/7.jpg",
+            "isPro": false,
+            "name": "laura",
+          },
         },
       ],
       "descriptions": Array [
@@ -67,11 +77,6 @@ exports[`Card successfully successfully rendered 1`] = `
       "isPremium": true,
       "mark": 4,
       "name": "Beautiful & luxurious apartment at great location",
-      "nearOffers": Array [
-        1,
-        2,
-        3,
-      ],
       "previewImg": "/img/apartment-01.jpg",
       "price": 120,
       "reviews": 2,
@@ -174,7 +179,7 @@ exports[`Card successfully successfully rendered 1`] = `
           <span
             style={
               Object {
-                "width": "90%",
+                "width": "80%",
               }
             }
           />

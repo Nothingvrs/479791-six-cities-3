@@ -22,20 +22,30 @@ exports[`Main successfully rendered 1`] = `
         },
         "comments": Array [
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 1,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 2,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
         ],
         "descriptions": Array [
@@ -68,11 +78,6 @@ exports[`Main successfully rendered 1`] = `
         "isPremium": true,
         "mark": 4,
         "name": "Beautiful & luxurious apartment at great location",
-        "nearOffers": Array [
-          1,
-          2,
-          3,
-        ],
         "previewImg": "/img/apartment-01.jpg",
         "price": 120,
         "reviews": 2,
@@ -96,12 +101,17 @@ exports[`Main successfully rendered 1`] = `
         },
         "comments": Array [
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 2,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
         ],
         "descriptions": Array [
@@ -136,11 +146,6 @@ exports[`Main successfully rendered 1`] = `
         "isPremium": false,
         "mark": 0,
         "name": "Wood and stone place",
-        "nearOffers": Array [
-          0,
-          2,
-          3,
-        ],
         "previewImg": "/img/apartment-01.jpg",
         "price": 80,
         "reviews": 2,
@@ -164,20 +169,30 @@ exports[`Main successfully rendered 1`] = `
         },
         "comments": Array [
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 1,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 2,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
         ],
         "descriptions": Array [
@@ -214,11 +229,6 @@ exports[`Main successfully rendered 1`] = `
         "isPremium": false,
         "mark": 4,
         "name": "Canal View Prinsengracht",
-        "nearOffers": Array [
-          0,
-          1,
-          3,
-        ],
         "previewImg": "/img/apartment-01.jpg",
         "price": 132,
         "reviews": 2,
@@ -242,20 +252,30 @@ exports[`Main successfully rendered 1`] = `
         },
         "comments": Array [
           Object {
-            "author": "Alex",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-03-26T13:51:50.417Z",
             "id": 1,
             "mark": 1,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
           Object {
-            "author": "Max",
-            "authorImg": "/img/avatar-max.jpg",
             "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
             "date": "2020-01-26T13:51:50.417Z",
             "id": 2,
             "mark": 4,
+            "user": Object {
+              "email": "laura@example.com",
+              "id": 1,
+              "img": "/static/avatar/7.jpg",
+              "isPro": false,
+              "name": "laura",
+            },
           },
         ],
         "descriptions": Array [
@@ -293,11 +313,6 @@ exports[`Main successfully rendered 1`] = `
         "isPremium": false,
         "mark": 5,
         "name": "Nice, cozy, warm big bed apartment",
-        "nearOffers": Array [
-          0,
-          1,
-          2,
-        ],
         "previewImg": "/img/apartment-01.jpg",
         "price": 180,
         "reviews": 2,
@@ -313,7 +328,7 @@ exports[`Main successfully rendered 1`] = `
       },
     }
   }
-  onHeaderClick={[Function]}
+  onHeaderClick={[MockFunction]}
 >
   <div
     className="page page--gray page--main"
@@ -452,7 +467,7 @@ exports[`Main successfully rendered 1`] = `
               <span
                 className="places__sorting-type"
                 onClick={[Function]}
-                tabIndex="0"
+                tabIndex={0}
               >
                 Popular
                 <svg
@@ -473,7 +488,7 @@ exports[`Main successfully rendered 1`] = `
                   data-test="test-filter-click"
                   key="popular - 0"
                   onClick={[Function]}
-                  tabIndex="0"
+                  tabIndex={0}
                 >
                   Popular
                 </li>
@@ -482,7 +497,7 @@ exports[`Main successfully rendered 1`] = `
                   data-test="test-filter-click"
                   key="lowToHigh - 1"
                   onClick={[Function]}
-                  tabIndex="0"
+                  tabIndex={0}
                 >
                   Price: low to high
                 </li>
@@ -491,7 +506,7 @@ exports[`Main successfully rendered 1`] = `
                   data-test="test-filter-click"
                   key="highToLow - 2"
                   onClick={[Function]}
-                  tabIndex="0"
+                  tabIndex={0}
                 >
                   Price: high to low
                 </li>
@@ -500,7 +515,7 @@ exports[`Main successfully rendered 1`] = `
                   data-test="test-filter-click"
                   key="topRated - 3"
                   onClick={[Function]}
-                  tabIndex="0"
+                  tabIndex={0}
                 >
                   Top rated first
                 </li>
@@ -530,20 +545,30 @@ exports[`Main successfully rendered 1`] = `
                       },
                       "comments": Array [
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 1,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 2,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                       ],
                       "descriptions": Array [
@@ -576,11 +601,6 @@ exports[`Main successfully rendered 1`] = `
                       "isPremium": true,
                       "mark": 4,
                       "name": "Beautiful & luxurious apartment at great location",
-                      "nearOffers": Array [
-                        1,
-                        2,
-                        3,
-                      ],
                       "previewImg": "/img/apartment-01.jpg",
                       "price": 120,
                       "reviews": 2,
@@ -686,7 +706,7 @@ exports[`Main successfully rendered 1`] = `
                           <span
                             style={
                               Object {
-                                "width": "90%",
+                                "width": "80%",
                               }
                             }
                           />
@@ -748,12 +768,17 @@ exports[`Main successfully rendered 1`] = `
                       },
                       "comments": Array [
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 2,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                       ],
                       "descriptions": Array [
@@ -788,11 +813,6 @@ exports[`Main successfully rendered 1`] = `
                       "isPremium": false,
                       "mark": 0,
                       "name": "Wood and stone place",
-                      "nearOffers": Array [
-                        0,
-                        2,
-                        3,
-                      ],
                       "previewImg": "/img/apartment-01.jpg",
                       "price": 80,
                       "reviews": 2,
@@ -891,7 +911,7 @@ exports[`Main successfully rendered 1`] = `
                           <span
                             style={
                               Object {
-                                "width": "90%",
+                                "width": "0%",
                               }
                             }
                           />
@@ -953,20 +973,30 @@ exports[`Main successfully rendered 1`] = `
                       },
                       "comments": Array [
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 1,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 2,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                       ],
                       "descriptions": Array [
@@ -1003,11 +1033,6 @@ exports[`Main successfully rendered 1`] = `
                       "isPremium": false,
                       "mark": 4,
                       "name": "Canal View Prinsengracht",
-                      "nearOffers": Array [
-                        0,
-                        1,
-                        3,
-                      ],
                       "previewImg": "/img/apartment-01.jpg",
                       "price": 132,
                       "reviews": 2,
@@ -1106,7 +1131,7 @@ exports[`Main successfully rendered 1`] = `
                           <span
                             style={
                               Object {
-                                "width": "90%",
+                                "width": "80%",
                               }
                             }
                           />
@@ -1168,20 +1193,30 @@ exports[`Main successfully rendered 1`] = `
                       },
                       "comments": Array [
                         Object {
-                          "author": "Alex",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-03-26T13:51:50.417Z",
                           "id": 1,
                           "mark": 1,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                         Object {
-                          "author": "Max",
-                          "authorImg": "/img/avatar-max.jpg",
                           "comment": "A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.",
                           "date": "2020-01-26T13:51:50.417Z",
                           "id": 2,
                           "mark": 4,
+                          "user": Object {
+                            "email": "laura@example.com",
+                            "id": 1,
+                            "img": "/static/avatar/7.jpg",
+                            "isPro": false,
+                            "name": "laura",
+                          },
                         },
                       ],
                       "descriptions": Array [
@@ -1219,11 +1254,6 @@ exports[`Main successfully rendered 1`] = `
                       "isPremium": false,
                       "mark": 5,
                       "name": "Nice, cozy, warm big bed apartment",
-                      "nearOffers": Array [
-                        0,
-                        1,
-                        2,
-                      ],
                       "previewImg": "/img/apartment-01.jpg",
                       "price": 180,
                       "reviews": 2,
@@ -1322,7 +1352,7 @@ exports[`Main successfully rendered 1`] = `
                           <span
                             style={
                               Object {
-                                "width": "90%",
+                                "width": "100%",
                               }
                             }
                           />
