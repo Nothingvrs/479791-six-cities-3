@@ -462,7 +462,7 @@ exports[`OfferCardDetails successfully rendered 1`] = `
             className="near-places__list places__list"
           >
             Array [
-              <Connect(OfferCard)
+              <Connect(withRouter(OfferCard))
                 card={
                   Object {
                     "addressCoords": Array [
@@ -535,7 +535,6 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                 }
                 hovered={false}
                 nearPlace={true}
-                onHeaderClick={[Function]}
                 onHover={[Function]}
                 onUnHover={[Function]}
               >
@@ -581,27 +580,42 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                           / night
                         </span>
                       </div>
-                      <button
-                        className="place-card__bookmark-button button place-card__bookmark-button--active"
+                      <Link
                         onClick={[Function]}
-                        type="button"
+                        to="/login"
                       >
-                        <svg
-                          className="place-card__bookmark-icon"
-                          height="19"
-                          width="18"
+                        <LinkAnchor
+                          href="/login"
+                          navigate={[Function]}
+                          onClick={[Function]}
                         >
-                          <use
-                            xlinkHref="#icon-bookmark"
-                          />
-                        </svg>
-                        <span
-                          className="visually-hidden"
-                        >
-                          In
-                           bookmarks
-                        </span>
-                      </button>
+                          <a
+                            href="/login"
+                            onClick={[Function]}
+                          >
+                            <button
+                              className="place-card__bookmark-button button place-card__bookmark-button--active"
+                              type="button"
+                            >
+                              <svg
+                                className="place-card__bookmark-icon"
+                                height="19"
+                                width="18"
+                              >
+                                <use
+                                  xlinkHref="#icon-bookmark"
+                                />
+                              </svg>
+                              <span
+                                className="visually-hidden"
+                              >
+                                In
+                                 bookmarks
+                              </span>
+                            </button>
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </div>
                     <div
                       className="place-card__rating rating"
@@ -626,13 +640,25 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     <h2
                       className="place-card__name"
                     >
-                      <a
+                      <Link
                         data-test="test-header-click"
                         href="#"
-                        onClick={[Function]}
+                        to="/offer/1"
                       >
-                        Wood and stone place
-                      </a>
+                        <LinkAnchor
+                          data-test="test-header-click"
+                          href="/offer/1"
+                          navigate={[Function]}
+                        >
+                          <a
+                            data-test="test-header-click"
+                            href="/offer/1"
+                            onClick={[Function]}
+                          >
+                            Wood and stone place
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </h2>
                     <p
                       className="place-card__type"
@@ -641,8 +667,8 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     </p>
                   </div>
                 </article>
-              </Connect(OfferCard)>,
-              <Connect(OfferCard)
+              </Connect(withRouter(OfferCard))>,
+              <Connect(withRouter(OfferCard))
                 card={
                   Object {
                     "addressCoords": Array [
@@ -725,7 +751,6 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                 }
                 hovered={false}
                 nearPlace={true}
-                onHeaderClick={[Function]}
                 onHover={[Function]}
                 onUnHover={[Function]}
               >
@@ -771,27 +796,42 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                           / night
                         </span>
                       </div>
-                      <button
-                        className="place-card__bookmark-button button false"
+                      <Link
                         onClick={[Function]}
-                        type="button"
+                        to="/login"
                       >
-                        <svg
-                          className="place-card__bookmark-icon"
-                          height="19"
-                          width="18"
+                        <LinkAnchor
+                          href="/login"
+                          navigate={[Function]}
+                          onClick={[Function]}
                         >
-                          <use
-                            xlinkHref="#icon-bookmark"
-                          />
-                        </svg>
-                        <span
-                          className="visually-hidden"
-                        >
-                          To
-                           bookmarks
-                        </span>
-                      </button>
+                          <a
+                            href="/login"
+                            onClick={[Function]}
+                          >
+                            <button
+                              className="place-card__bookmark-button button false"
+                              type="button"
+                            >
+                              <svg
+                                className="place-card__bookmark-icon"
+                                height="19"
+                                width="18"
+                              >
+                                <use
+                                  xlinkHref="#icon-bookmark"
+                                />
+                              </svg>
+                              <span
+                                className="visually-hidden"
+                              >
+                                To
+                                 bookmarks
+                              </span>
+                            </button>
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </div>
                     <div
                       className="place-card__rating rating"
@@ -816,13 +856,25 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     <h2
                       className="place-card__name"
                     >
-                      <a
+                      <Link
                         data-test="test-header-click"
                         href="#"
-                        onClick={[Function]}
+                        to="/offer/2"
                       >
-                        Canal View Prinsengracht
-                      </a>
+                        <LinkAnchor
+                          data-test="test-header-click"
+                          href="/offer/2"
+                          navigate={[Function]}
+                        >
+                          <a
+                            data-test="test-header-click"
+                            href="/offer/2"
+                            onClick={[Function]}
+                          >
+                            Canal View Prinsengracht
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </h2>
                     <p
                       className="place-card__type"
@@ -831,8 +883,8 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     </p>
                   </div>
                 </article>
-              </Connect(OfferCard)>,
-              <Connect(OfferCard)
+              </Connect(withRouter(OfferCard))>,
+              <Connect(withRouter(OfferCard))
                 card={
                   Object {
                     "addressCoords": Array [
@@ -916,7 +968,6 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                 }
                 hovered={false}
                 nearPlace={true}
-                onHeaderClick={[Function]}
                 onHover={[Function]}
                 onUnHover={[Function]}
               >
@@ -962,27 +1013,42 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                           / night
                         </span>
                       </div>
-                      <button
-                        className="place-card__bookmark-button button false"
+                      <Link
                         onClick={[Function]}
-                        type="button"
+                        to="/login"
                       >
-                        <svg
-                          className="place-card__bookmark-icon"
-                          height="19"
-                          width="18"
+                        <LinkAnchor
+                          href="/login"
+                          navigate={[Function]}
+                          onClick={[Function]}
                         >
-                          <use
-                            xlinkHref="#icon-bookmark"
-                          />
-                        </svg>
-                        <span
-                          className="visually-hidden"
-                        >
-                          To
-                           bookmarks
-                        </span>
-                      </button>
+                          <a
+                            href="/login"
+                            onClick={[Function]}
+                          >
+                            <button
+                              className="place-card__bookmark-button button false"
+                              type="button"
+                            >
+                              <svg
+                                className="place-card__bookmark-icon"
+                                height="19"
+                                width="18"
+                              >
+                                <use
+                                  xlinkHref="#icon-bookmark"
+                                />
+                              </svg>
+                              <span
+                                className="visually-hidden"
+                              >
+                                To
+                                 bookmarks
+                              </span>
+                            </button>
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </div>
                     <div
                       className="place-card__rating rating"
@@ -1007,13 +1073,25 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     <h2
                       className="place-card__name"
                     >
-                      <a
+                      <Link
                         data-test="test-header-click"
                         href="#"
-                        onClick={[Function]}
+                        to="/offer/3"
                       >
-                        Nice, cozy, warm big bed apartment
-                      </a>
+                        <LinkAnchor
+                          data-test="test-header-click"
+                          href="/offer/3"
+                          navigate={[Function]}
+                        >
+                          <a
+                            data-test="test-header-click"
+                            href="/offer/3"
+                            onClick={[Function]}
+                          >
+                            Nice, cozy, warm big bed apartment
+                          </a>
+                        </LinkAnchor>
+                      </Link>
                     </h2>
                     <p
                       className="place-card__type"
@@ -1022,7 +1100,7 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                     </p>
                   </div>
                 </article>
-              </Connect(OfferCard)>,
+              </Connect(withRouter(OfferCard))>,
             ]
           </div>
         </section>
