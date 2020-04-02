@@ -29,7 +29,7 @@ const SignIn: React.FC <InterfaceSignIn & RouteComponentProps> = (props) => {
   const _formSubmitHandler = (evt) => {
     evt.preventDefault();
     const valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
+        email
     );
 
     if (valid) {

@@ -43,19 +43,19 @@ describe(`SignIn e2e`, () => {
   const emailChangeHandler = jest.fn();
   const login = jest.fn();
   const app = mount(
-    <Provider store={store}>
-      <SignIn
-        password={logInMockData.password}
-        email={logInMockData.email}
-        onEmailChange={emailChangeHandler}
-        city={mockCities[0]}
-        onPasswordChange={passwordChangeHandler}
-        login={login}
-        isAuth={true}
-        error={``}
-        {...routeComponentPropsMock}
-      />
-    </Provider>
+      <Provider store={store}>
+        <SignIn
+          password={logInMockData.password}
+          email={logInMockData.email}
+          onEmailChange={emailChangeHandler}
+          city={mockCities[0]}
+          onPasswordChange={passwordChangeHandler}
+          login={login}
+          isAuth={true}
+          error={``}
+          {...routeComponentPropsMock}
+        />
+      </Provider>
   );
 
   it(`Email change is working correctly`, () => {

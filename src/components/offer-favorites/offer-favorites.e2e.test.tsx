@@ -11,17 +11,17 @@ Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 describe(`OfferFilter e2e`, () => {
 
-    it(`Should onMount successfully working`, () => {
-      const mockOnMount = jest.fn();
-      mount(
-        <Provider store={getTestStore()}>
-          <BrowserRouter>
-            <OffersFavorites onMount={mockOnMount} error = {``} favoriteOffersPerCity={[{city: mockCards[0].city.name, cards: mockCards}]}/>
-          </BrowserRouter>
-        </Provider>
-      );
+  it(`Should onMount successfully working`, () => {
+    const mockOnMount = jest.fn();
+    mount(
+          <Provider store={getTestStore()}>
+            <BrowserRouter>
+              <OffersFavorites onMount={mockOnMount} error = {``} favoriteOffersPerCity={[{city: mockCards[0].city.name, cards: mockCards}]}/>
+            </BrowserRouter>
+          </Provider>
+    );
 
-      expect(mockOnMount).toHaveBeenCalledTimes(1);
-    });
-  }
+    expect(mockOnMount).toHaveBeenCalledTimes(1);
+  });
+}
 );

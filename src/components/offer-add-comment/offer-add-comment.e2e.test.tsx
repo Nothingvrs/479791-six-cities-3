@@ -16,9 +16,9 @@ describe(`OfferAddComment`, () => {
     const commentSetHandler = jest.fn();
     const mockFunc = jest.fn();
     const app = mount(
-      <Provider store={getTestStore()}>
-        <OfferAddComment mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={commentSetHandler} onResetComments={mockFunc}/>
-      </Provider>
+        <Provider store={getTestStore()}>
+          <OfferAddComment mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={commentSetHandler} onResetComments={mockFunc}/>
+        </Provider>
     );
 
     const commentField = findByTestAtr(app, `test-add-comment`);
@@ -30,9 +30,9 @@ describe(`OfferAddComment`, () => {
     const markSetHandler = jest.fn();
     const mockFunc = jest.fn();
     const app = mount(
-      <Provider store={getTestStore()}>
-        <OfferAddComment mark = {mockComment.mark} onMarkSet={markSetHandler} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
-      </Provider>
+        <Provider store={getTestStore()}>
+          <OfferAddComment mark = {mockComment.mark} onMarkSet={markSetHandler} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
+        </Provider>
     );
 
     const markField = findByTestAtr(app, `test-mark-set`);
@@ -47,7 +47,7 @@ describe(`OfferAddComment`, () => {
     const addComment = jest.fn();
     const mockFunc = jest.fn();
     const app = mount(
-      <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {mockFunc} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {addComment} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
+        <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {mockFunc} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {addComment} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
     );
 
     const formField = findByTestAtr(app, `test-addComment`);
@@ -61,7 +61,7 @@ describe(`OfferAddComment`, () => {
     const setIsSendingHandler = jest.fn();
     const mockFunc = jest.fn();
     mount(
-      <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {setIsSendingHandler} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={resetComments}/>
+        <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {setIsSendingHandler} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={resetComments}/>
     );
     expect(resetComments).toHaveBeenCalledTimes(1);
     expect(setIsSendingHandler).toHaveBeenCalledTimes(1);
@@ -71,7 +71,7 @@ describe(`OfferAddComment`, () => {
     const validationHandler = jest.fn();
     const mockFunc = jest.fn();
     const app = mount(
-      <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {mockFunc} isSending = {true} isValid = {true} onValidationSet = {validationHandler} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.shortComment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
+        <OfferAddCommentWithoutStore error={``} isCommentAdded = {true} onSetIsSending = {mockFunc} isSending = {true} isValid = {true} onValidationSet = {validationHandler} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.shortComment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
     );
     const formField = findByTestAtr(app, `test-addComment`);
     formField.simulate(`submit`);
@@ -82,7 +82,7 @@ describe(`OfferAddComment`, () => {
     const setIsSendingHandler = jest.fn();
     const mockFunc = jest.fn();
     const app = mount(
-      <OfferAddCommentWithoutStore error={``} isCommentAdded = {false} onSetIsSending = {setIsSendingHandler} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
+        <OfferAddCommentWithoutStore error={``} isCommentAdded = {false} onSetIsSending = {setIsSendingHandler} isSending = {true} isValid = {true} onValidationSet = {mockFunc} addComment = {mockFunc} mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} id={0} onCommentSet={mockFunc} onResetComments={mockFunc}/>
     );
     const formField = findByTestAtr(app, `test-addComment`);
     formField.simulate(`submit`);

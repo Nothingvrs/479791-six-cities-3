@@ -89,8 +89,8 @@ const OfferCard: React.FC <OfferCardProps & RouteComponentProps> = (props) => {
         </div>
         <h2 className="place-card__name">
           <Link to={`/offer/${id}`}
-                href="#"
-                data-test="test-header-click"
+            href="#"
+            data-test="test-header-click"
           >
             {name}
           </Link>

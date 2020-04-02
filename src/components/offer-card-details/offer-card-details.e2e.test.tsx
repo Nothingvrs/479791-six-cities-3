@@ -31,23 +31,23 @@ describe(`OfferCard e2e`, () => {
     match: mockMatch as any
   };
   const app = mount(
-    <Provider store={getTestStore()}>
-      <BrowserRouter>
-        <OfferCardDetail
-          card={mockCards[0]}
-          isAuth={true}
-          isLoaded={true}
-          comments={[mockComment]}
-          user={userData}
-          onSetFavorite={setFavoriteHandler}
-          error={``}
-          nearOffers={mockCards}
-          onMount={mockOnMount}
-          {...routeComponentPropsMock}
-          hoveredId={0}
-        />
-      </BrowserRouter>
-    </Provider>
+      <Provider store={getTestStore()}>
+        <BrowserRouter>
+          <OfferCardDetail
+            card={mockCards[0]}
+            isAuth={true}
+            isLoaded={true}
+            comments={[mockComment]}
+            user={userData}
+            onSetFavorite={setFavoriteHandler}
+            error={``}
+            nearOffers={mockCards}
+            onMount={mockOnMount}
+            {...routeComponentPropsMock}
+            hoveredId={0}
+          />
+        </BrowserRouter>
+      </Provider>
   );
 
   it(`Should onMount successfully working`, () => {

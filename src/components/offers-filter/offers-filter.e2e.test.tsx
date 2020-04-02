@@ -11,12 +11,12 @@ describe(`OfferFilter e2e`, () => {
   const onFilterClick = jest.fn();
   const onChangeFilter = jest.fn();
   const app = shallow(
-    <OffersFilter
-      onChangeFilter={onChangeFilter}
-      filter="popular"
-      onFilterClick={onFilterClick}
-      isOpen={false}
-    />
+      <OffersFilter
+        onChangeFilter={onChangeFilter}
+        filter="popular"
+        onFilterClick={onFilterClick}
+        isOpen={false}
+      />
   );
   const filters = findByTestAtr(app, `test-filter-click`);
 

@@ -18,14 +18,14 @@ it(`OfferCardDetails successfully rendered`, () => {
     }
   };
   const tree = mount(
-    <Provider store={getTestStore()}>
-      <BrowserRouter>
-        <OfferCardDetails
-          history={mockHistory}
-          match={mockMatch}
-        />
-      </BrowserRouter>
-    </Provider>
+      <Provider store={getTestStore()}>
+        <BrowserRouter>
+          <OfferCardDetails
+            history={mockHistory}
+            match={mockMatch}
+          />
+        </BrowserRouter>
+      </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

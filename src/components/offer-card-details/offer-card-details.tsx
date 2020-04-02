@@ -37,7 +37,7 @@ interface OfferCardDetailProps {
 }
 
 const OfferCardDetail: React.FC<OfferCardDetailProps & RouteComponentProps<MatchParams>> = (
-  props
+    props
 ) => {
   const {comments, onMount, user, isAuth, onSetFavorite, hoveredId, nearOffers, error} = props;
 

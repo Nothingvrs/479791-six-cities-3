@@ -13,14 +13,14 @@ describe(`OffersCityItem e2e`, () => {
   const hoverHandler = jest.fn();
   const mouseLeaveHandler = jest.fn();
   const app = shallow(
-    <OffersCityItem
-      cityName={mockCities[0]}
-      activeCity={mockCities[0]}
-      hovered={true}
-      onHover={hoverHandler}
-      onUnHover={mouseLeaveHandler}
-      onCityNameClick={cityClickHandler}
-    />
+      <OffersCityItem
+        cityName={mockCities[0]}
+        activeCity={mockCities[0]}
+        hovered={true}
+        onHover={hoverHandler}
+        onUnHover={mouseLeaveHandler}
+        onCityNameClick={cityClickHandler}
+      />
   );
   const cityItem = findByTestAtr(app, `test-city-hover`);
 

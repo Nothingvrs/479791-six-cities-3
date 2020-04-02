@@ -13,9 +13,9 @@ Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 it(`OfferComments successfully rendered`, () => {
   const tree = mount(
-    <Provider store={getTestStore()}>
-      <OfferComments comments={[mockComment]} id={1} isAuth={true}/>
-    </Provider>
+      <Provider store={getTestStore()}>
+        <OfferComments comments={[mockComment]} id={1} isAuth={true}/>
+      </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

@@ -22,18 +22,18 @@ describe(`OfferCard e2e`, () => {
     match: {} as any
   };
   const app = mount(
-    <BrowserRouter>
-      <OfferCard
-        card={mockCards[0]}
-        {...routeComponentPropsMock}
-        nearPlace={false}
-        isAuth
-        favorite={false}
-        onHover={hoverHandler}
-        onUnHover={mouseLeaveHandler}
-        onSetFavorite={setFavoriteHandler}
-      />
-    </BrowserRouter>
+      <BrowserRouter>
+        <OfferCard
+          card={mockCards[0]}
+          {...routeComponentPropsMock}
+          nearPlace={false}
+          isAuth
+          favorite={false}
+          onHover={hoverHandler}
+          onUnHover={mouseLeaveHandler}
+          onSetFavorite={setFavoriteHandler}
+        />
+      </BrowserRouter>
   );
   const article = findByTestAtr(app, `test-card-hover`);
 
