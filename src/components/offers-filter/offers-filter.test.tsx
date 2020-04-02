@@ -4,6 +4,6 @@ import OffersFilter from "./offers-filter";
 
 it(`OffersFilter successfully rendered`, () => {
   const mockFunc = jest.fn();
-  const tree = renderer.create(<OffersFilter onChangeFilter = {mockFunc} filter='popular' onActiveFilterSet = {mockFunc} isOpen = {false} onFilterOpen={mockFunc}/>);
+  const tree = renderer.create(<OffersFilter onChangeFilter = {mockFunc} filter='popular' isOpen = {false} onFilterClick={mockFunc}/>);
   expect(tree).toMatchSnapshot();
 });

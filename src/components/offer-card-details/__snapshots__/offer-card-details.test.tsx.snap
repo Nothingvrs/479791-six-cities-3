@@ -181,13 +181,11 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                 Beautiful & luxurious apartment at great location
               </h1>
               <Link
-                onClick={[Function]}
                 to="/login"
               >
                 <LinkAnchor
                   href="/login"
                   navigate={[Function]}
-                  onClick={[Function]}
                 >
                   <a
                     href="/login"
@@ -195,6 +193,8 @@ exports[`OfferCardDetails successfully rendered 1`] = `
                   >
                     <button
                       className="property__bookmark-button button property__bookmark-button--active"
+                      data-test="test-add-to-favorite"
+                      onClick={[Function]}
                       type="button"
                     >
                       <svg

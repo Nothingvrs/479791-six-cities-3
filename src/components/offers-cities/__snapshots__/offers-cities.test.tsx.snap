@@ -6,6 +6,7 @@ exports[`OffersCities successfully rendered 1`] = `
 >
   <li
     className="locations__item"
+    data-test="test-city-hover"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     style={Object {}}
@@ -22,6 +23,7 @@ exports[`OffersCities successfully rendered 1`] = `
   </li>
   <li
     className="locations__item"
+    data-test="test-city-hover"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     style={Object {}}

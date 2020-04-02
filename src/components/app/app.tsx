@@ -3,7 +3,7 @@ import Main from '../main/main';
 import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import OfferCardDetail from '../offer-card-details/offer-card-details';
 import SignIn from "../sign-in/sign-in";
-import withForm from "../../hocs/withForm";
+import withForm from "../../hocs/withForm/withForm";
 import OffersFavorites from "../offer-favorites/offer-favorites";
 import PrivateRoute from "../private-route/private-route";
 

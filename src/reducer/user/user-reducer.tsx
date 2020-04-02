@@ -2,7 +2,7 @@ import {userAdapter} from '../../utils/utils';
 
 export const Action = {AUTH_USER: `auth-user`, SET_ERR_MSG: `set-error-message`};
 
-const UNAUTHORIZED = 401;
+export const UNAUTHORIZED_CODE = 401;
 const BAD_REQUEST = 400;
 export const Authorization = {
   NO_AUTH: `no-auth`,
@@ -18,7 +18,7 @@ export const UserOperation = {
           dispatch(UserActionCreator.setAuthStatus(Authorization.AUTH, userAdapter(response.data)));
         })
         .catch((err) => {
-          if (err.response.status === UNAUTHORIZED) {
+          if (err.response.status === UNAUTHORIZED_CODE) {
             dispatch(UserActionCreator.setAuthStatus(Authorization.NO_AUTH, ``));
           }
         });

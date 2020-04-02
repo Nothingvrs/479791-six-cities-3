@@ -14,6 +14,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
   <form
     action="#"
     className="reviews__form form"
+    data-test="test-addComment"
     method="post"
     onSubmit={[Function]}
   >
@@ -29,6 +30,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="5-stars"
         name="rating"
         onChange={[Function]}
@@ -53,6 +55,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="4-stars"
         name="rating"
         onChange={[Function]}
@@ -77,6 +80,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={true}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="3-stars"
         name="rating"
         onChange={[Function]}
@@ -101,6 +105,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="2-stars"
         name="rating"
         onChange={[Function]}
@@ -125,6 +130,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="1-stars"
         name="rating"
         onChange={[Function]}

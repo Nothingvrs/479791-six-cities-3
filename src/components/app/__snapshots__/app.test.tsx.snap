@@ -125,6 +125,7 @@ exports[`App successfully rendered 1`] = `
           >
             <li
               className="locations__item"
+              data-test="test-city-hover"
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
               style={Object {}}
@@ -370,13 +371,11 @@ exports[`App successfully rendered 1`] = `
                           </span>
                         </div>
                         <Link
-                          onClick={[Function]}
                           to="/login"
                         >
                           <LinkAnchor
                             href="/login"
                             navigate={[Function]}
-                            onClick={[Function]}
                           >
                             <a
                               href="/login"
@@ -384,6 +383,8 @@ exports[`App successfully rendered 1`] = `
                             >
                               <button
                                 className="place-card__bookmark-button button place-card__bookmark-button--active"
+                                data-test="test-card-add-to-favorite"
+                                onClick={[Function]}
                                 type="button"
                               >
                                 <svg
@@ -575,13 +576,11 @@ exports[`App successfully rendered 1`] = `
                           </span>
                         </div>
                         <Link
-                          onClick={[Function]}
                           to="/login"
                         >
                           <LinkAnchor
                             href="/login"
                             navigate={[Function]}
-                            onClick={[Function]}
                           >
                             <a
                               href="/login"
@@ -589,6 +588,8 @@ exports[`App successfully rendered 1`] = `
                             >
                               <button
                                 className="place-card__bookmark-button button place-card__bookmark-button--active"
+                                data-test="test-card-add-to-favorite"
+                                onClick={[Function]}
                                 type="button"
                               >
                                 <svg
@@ -795,13 +796,11 @@ exports[`App successfully rendered 1`] = `
                           </span>
                         </div>
                         <Link
-                          onClick={[Function]}
                           to="/login"
                         >
                           <LinkAnchor
                             href="/login"
                             navigate={[Function]}
-                            onClick={[Function]}
                           >
                             <a
                               href="/login"
@@ -809,6 +808,8 @@ exports[`App successfully rendered 1`] = `
                             >
                               <button
                                 className="place-card__bookmark-button button false"
+                                data-test="test-card-add-to-favorite"
+                                onClick={[Function]}
                                 type="button"
                               >
                                 <svg
@@ -1016,13 +1017,11 @@ exports[`App successfully rendered 1`] = `
                           </span>
                         </div>
                         <Link
-                          onClick={[Function]}
                           to="/login"
                         >
                           <LinkAnchor
                             href="/login"
                             navigate={[Function]}
-                            onClick={[Function]}
                           >
                             <a
                               href="/login"
@@ -1030,6 +1029,8 @@ exports[`App successfully rendered 1`] = `
                             >
                               <button
                                 className="place-card__bookmark-button button false"
+                                data-test="test-card-add-to-favorite"
+                                onClick={[Function]}
                                 type="button"
                               >
                                 <svg

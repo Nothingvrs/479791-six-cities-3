@@ -6,7 +6,7 @@ import OffersCities from '../offers-cities/offers-cities';
 import OffersFilter from '../offers-filter/offers-filter';
 import MainEmpty from '../main-empty/main-empty';
 import {ActionCreator} from '../../reducer/data/data-reducer';
-import withFilter from '../../hocs/withFilters';
+import withFilter from '../../hocs/withFilters/withFilters';
 import {
   getCards,
   getCitiesFromState,

@@ -134,13 +134,11 @@ exports[`OfferCard successfully successfully rendered 1`] = `
           </span>
         </div>
         <Link
-          onClick={[Function]}
           to="/login"
         >
           <LinkAnchor
             href="/login"
             navigate={[Function]}
-            onClick={[Function]}
           >
             <a
               href="/login"
@@ -148,6 +146,8 @@ exports[`OfferCard successfully successfully rendered 1`] = `
             >
               <button
                 className="place-card__bookmark-button button place-card__bookmark-button--active"
+                data-test="test-card-add-to-favorite"
+                onClick={[Function]}
                 type="button"
               >
                 <svg

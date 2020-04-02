@@ -14,7 +14,7 @@ const OffersCityItem: React.FC <OffersCityItemProps> = (props) => {
   const {cityName, onCityNameClick, activeCity, hovered, onHover, onUnHover} = props;
 
   return (
-    <li className="locations__item" style={hovered ? {textShadow: `1px 0 0,.5px 0 0,-1px 0 0`} : {}} onMouseEnter={onHover} onMouseLeave = {onUnHover}>
+    <li className="locations__item" style={hovered ? {textShadow: `1px 0 0,.5px 0 0,-1px 0 0`} : {}} onMouseEnter={onHover} onMouseLeave = {onUnHover} data-test="test-city-hover">
       <a
         className={`locations__item-link tabs__item ${cityName.name === activeCity.name ? `tabs__item--active` : ``}`}
         onClick={(evt) => {

@@ -90,14 +90,15 @@ exports[`OfferComments successfully rendered 1`] = `
     onEmailChange={[Function]}
     onMarkSet={[Function]}
     onPasswordChange={[Function]}
+    onResetComments={[Function]}
+    onSetIsSending={[Function]}
+    onValidationSet={[Function]}
     password=""
-    resetComments={[Function]}
-    setIsSending={[Function]}
-    validationSet={[Function]}
   >
     <form
       action="#"
       className="reviews__form form"
+      data-test="test-addComment"
       method="post"
       onSubmit={[Function]}
     >
@@ -113,6 +114,7 @@ exports[`OfferComments successfully rendered 1`] = `
         <input
           checked={false}
           className="form__rating-input visually-hidden"
+          data-test="test-mark-set"
           id="5-stars"
           name="rating"
           onChange={[Function]}
@@ -137,6 +139,7 @@ exports[`OfferComments successfully rendered 1`] = `
         <input
           checked={false}
           className="form__rating-input visually-hidden"
+          data-test="test-mark-set"
           id="4-stars"
           name="rating"
           onChange={[Function]}
@@ -161,6 +164,7 @@ exports[`OfferComments successfully rendered 1`] = `
         <input
           checked={false}
           className="form__rating-input visually-hidden"
+          data-test="test-mark-set"
           id="3-stars"
           name="rating"
           onChange={[Function]}
@@ -185,6 +189,7 @@ exports[`OfferComments successfully rendered 1`] = `
         <input
           checked={false}
           className="form__rating-input visually-hidden"
+          data-test="test-mark-set"
           id="2-stars"
           name="rating"
           onChange={[Function]}
@@ -209,6 +214,7 @@ exports[`OfferComments successfully rendered 1`] = `
         <input
           checked={false}
           className="form__rating-input visually-hidden"
+          data-test="test-mark-set"
           id="1-stars"
           name="rating"
           onChange={[Function]}

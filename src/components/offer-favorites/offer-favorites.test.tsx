@@ -26,28 +26,3 @@ it(`OfferCardDetails successfully rendered`, () => {
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });
-
-const reducer = (state = initialState) => {
-  return state;
-};
-const api = createApi();
-const store = createStore(reducer, applyMiddleware(thunk.withExtraArgument(api)));
-
-Enzyme.configure({adapter: new EnzymeReactAdapter()});
-
-it(`OfferCardDetails successfully rendered`, () => {
-  const mockHistory = {push: jest.fn};
-  const mockMatch = {
-    params: {
-      id: 0
-    }
-  };
-  const tree = mount(
-      <Provider store={store}>
-        <BrowserRouter>
-          <OffersFavorites history={mockHistory} match={mockMatch} />
-        </BrowserRouter>
-      </Provider>
-  );
-  expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
-});

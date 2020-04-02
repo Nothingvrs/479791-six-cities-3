@@ -3,6 +3,7 @@
 exports[`OffersCities successfully rendered 1`] = `
 <li
   className="locations__item"
+  data-test="test-city-hover"
   onMouseEnter={[MockFunction]}
   onMouseLeave={[MockFunction]}
   style={

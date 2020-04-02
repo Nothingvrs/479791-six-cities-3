@@ -7,7 +7,7 @@ import {Provider} from 'react-redux';
 import {createApi} from './api';
 import thunk from "redux-thunk";
 import {UserOperation} from "./reducer/user/user-reducer";
-import {ActionCreator} from "./reducer/data/data-reducer";
+import {DataOperation} from "./reducer/data/data-reducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 
 const api = createApi();
@@ -15,7 +15,7 @@ const api = createApi();
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
 
-store.dispatch(ActionCreator.getOffersFromApi());
+store.dispatch(DataOperation.getOffersFromApi());
 store.dispatch(UserOperation.authUser());
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));
