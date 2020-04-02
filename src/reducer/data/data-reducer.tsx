@@ -1,4 +1,5 @@
 import {CardModel, CityModel, commentAdapter, getCities, offerAdapter} from '../../utils/utils';
+import {UNAUTHORIZED_CODE} from '../user/user-reducer';
 
 const Favorite = {
   ADD: 1,
@@ -31,23 +32,37 @@ export const Action = {
 };
 
 export const DataOperation = {
+  getOffersFromApi() {
+    return (dispatch, state, api) => {
+      api
+        .get(`/hotels`)
+        .then((response) => {
+          dispatch(ActionCreator.setOffers(response.data));
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === UNAUTHORIZED_CODE) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
+          }
+          return null;
+        });
+    };
+  },
   loadComments(id) {
     return (dispatch, state, api) => {
       api
         .get(`/comments/${id}`)
         .then((response) => {
-          dispatch({
-            type: Action.GET_COMMENTS,
-            payload: response.data
-          });
+          dispatch(ActionCreator.setComments(response.data));
         })
         .catch((error) => {
-          if (error.responce.status !== 401) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
+          if (error.response && error.response.status === 401) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
           }
+          return null;
         });
     };
   },
@@ -56,18 +71,15 @@ export const DataOperation = {
       api
         .get(`hotels/${id}/nearby`)
         .then((response) => {
-          dispatch({
-            type: Action.GET_NEARBY,
-            payload: response.data
-          });
+          dispatch(ActionCreator.setNearBy(response.data));
         })
         .catch((error) => {
-          if (error.responce.status !== 401) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
+          if (error.response && error.response.status === UNAUTHORIZED_CODE) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
           }
+          return null;
         });
     };
   },
@@ -76,22 +88,16 @@ export const DataOperation = {
       api
         .post(`/comments/${id}`, data)
         .then((response) => {
-          dispatch({
-            type: Action.GET_COMMENTS,
-            payload: response.data
-          });
-          dispatch({
-            type: Action.ADD_COMMENT,
-            payload: true
-          });
+          dispatch(ActionCreator.setComments(response.data));
+          dispatch(ActionCreator.addComment(true));
         })
         .catch((error) => {
-          if (error.responce.status !== 401) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
+          if (error.response && error.response.status === UNAUTHORIZED_CODE) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
           }
+          return null;
         });
     };
   },
@@ -100,25 +106,19 @@ export const DataOperation = {
       api
         .post(`/favorite/${offerId}/${status ? Favorite.DELETE : Favorite.ADD}`)
         .then((response) => {
-          dispatch({
-            type: Action.SET_UPDATED_FAVORITE_OFFER,
-            payload: response.data
-          });
+          dispatch(ActionCreator.setUpdatedFavoriteOffer(response.data));
         })
         .then(() => api.get(`/favorite`))
         .then((response) => {
-          dispatch({
-            type: Action.LOAD_FAVORITE_OFFERS,
-            payload: response.data
-          });
+          dispatch(ActionCreator.setFavoritesOffers(response.data));
         })
         .catch((error) => {
-          if (error.responce.status !== 401) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
+          if (error.response && error.response.status === UNAUTHORIZED_CODE) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
           }
+          return null;
         });
     };
   },
@@ -127,18 +127,15 @@ export const DataOperation = {
       api
         .get(`/favorite`)
         .then((response) => {
-          dispatch({
-            type: Action.LOAD_FAVORITE_OFFERS,
-            payload: response.data
-          });
+          dispatch(ActionCreator.setFavoritesOffers(response.data));
         })
         .catch((error) => {
-          if (error) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
+          if (error.response && error.response.status === UNAUTHORIZED_CODE) {
+            return null;
+          } else {
+            dispatch(ActionCreator.setError(error.message));
           }
+          return null;
         });
     };
   }
@@ -157,25 +154,26 @@ export const ActionCreator = {
   setCity(cityName) {
     return {type: Action.SET_CITY, payload: cityName};
   },
-  getOffersFromApi() {
-    return (dispatch, state, api) => {
-      api
-        .get(`/hotels`)
-        .then((response) => {
-          dispatch({
-            type: Action.GET_OFFERS,
-            payload: response.data
-          });
-        })
-        .catch((error) => {
-          if (error) {
-            dispatch({
-              type: Action.SET_ERROR,
-              payload: error.message
-            });
-          }
-        });
-    };
+  setOffers(offers) {
+    return {type: Action.GET_OFFERS, payload: offers};
+  },
+  setError(error) {
+    return {type: Action.SET_ERROR, payload: error};
+  },
+  setComments(comments) {
+    return {type: Action.GET_COMMENTS, payload: comments};
+  },
+  setNearBy(offers) {
+    return {type: Action.GET_NEARBY, payload: offers};
+  },
+  addComment(isAdded) {
+    return {type: Action.ADD_COMMENT, payload: isAdded};
+  },
+  setUpdatedFavoriteOffer(offer) {
+    return {type: Action.SET_UPDATED_FAVORITE_OFFER, payload: offer};
+  },
+  setFavoritesOffers(offers) {
+    return {type: Action.LOAD_FAVORITE_OFFERS, payload: offers};
   }
 };
 
@@ -214,6 +212,7 @@ export const dataReducer = (state = initialState, action) => {
     case Action.GET_COMMENTS:
       return Object.assign({}, state, {
         error: ``,
+        isCommentAdded: false,
         comments: action.payload.map((comment) => commentAdapter(comment))
       });
     case Action.LOAD_FAVORITE_OFFERS:
@@ -230,7 +229,7 @@ export const dataReducer = (state = initialState, action) => {
         nearOffers: action.payload.map((offer) => offerAdapter(offer))
       });
     case Action.ADD_COMMENT:
-      return Object.assign({}, state, {commentAdded: action.payload});
+      return Object.assign({}, state, {isCommentAdded: action.payload});
     case Action.SET_ERROR:
       return Object.assign({}, state, {error: action.payload});
   }

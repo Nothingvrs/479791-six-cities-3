@@ -9,16 +9,15 @@ const FILTERS = {
 
 interface OffersFilterProps {
   onChangeFilter: (filterName: string) => void;
-    filter: string;
-    onActiveFilterSet: () => void;
-    onFilterOpen: () => void;
-    isOpen: boolean;
+  filter: string;
+  onFilterClick: () => void;
+  isOpen: boolean;
 }
 
 const OffersFilter: React.FC <OffersFilterProps> = (props) => {
 
   const _setActiveFilterHandler = (filter) => {
-    props.onActiveFilterSet();
+    props.onFilterClick();
     props.onChangeFilter(filter);
   };
 
@@ -39,7 +38,7 @@ const OffersFilter: React.FC <OffersFilterProps> = (props) => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex= {0} onClick={props.onFilterOpen}>
+      <span className="places__sorting-type" tabIndex= {0} onClick={props.onFilterClick}>
         {FILTERS[props.filter]}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>

@@ -12,11 +12,11 @@ Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
 it(`Card successfully successfully rendered`, () => {
   const tree = mount(
-    <Provider store={getTestStore()}>
-      <BrowserRouter>
-        <OffersList cards={mockCards}/>
-      </BrowserRouter>
-    </Provider>
+      <Provider store={getTestStore()}>
+        <BrowserRouter>
+          <OffersList cards={mockCards}/>
+        </BrowserRouter>
+      </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

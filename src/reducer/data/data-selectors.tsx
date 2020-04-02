@@ -2,7 +2,7 @@ import {createSelector} from 'reselect';
 import {getCities} from '../../utils/utils';
 
 export const getError = (state) => state.data.error;
-
+export const getIsCommentAdded = (state) => state.data.isCommentAdded;
 export const getFilter = (state) => state.data.filterName;
 export const getCity = (state) => state.data.city;
 export const getOffers = (state) => state.data.offers;

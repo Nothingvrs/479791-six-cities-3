@@ -14,9 +14,9 @@ Enzyme.configure({adapter: new EnzymeReactAdapter()});
 it(`OfferAddComment successfully rendered`, () => {
   const mockFunc = jest.fn();
   const tree = mount(
-    <Provider store={getTestStore()}>
-      <OfferAddComment mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} isAuth id={0} addComment={mockFunc} onCommentSet={mockFunc} resetComments={mockFunc}/>
-    </Provider>
+      <Provider store={getTestStore()}>
+        <OfferAddComment mark = {mockComment.mark} onMarkSet={mockFunc} comment={mockComment.comment} isAuth id={0} addComment={mockFunc} onCommentSet={mockFunc} resetComments={mockFunc}/>
+      </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

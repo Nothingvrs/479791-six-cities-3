@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WelcomeScreen successfully rendered 1`] = `
+exports[`OffersFilter successfully rendered 1`] = `
 <form
   action="#"
   className="places__sorting"
@@ -13,8 +13,8 @@ exports[`WelcomeScreen successfully rendered 1`] = `
   </span>
   <span
     className="places__sorting-type"
-    onClick={[Function]}
-    tabIndex="0"
+    onClick={[MockFunction]}
+    tabIndex={0}
   >
     Popular
     <svg
@@ -34,7 +34,7 @@ exports[`WelcomeScreen successfully rendered 1`] = `
       className="places__option places__option--active"
       data-test="test-filter-click"
       onClick={[Function]}
-      tabIndex="0"
+      tabIndex={0}
     >
       Popular
     </li>
@@ -42,7 +42,7 @@ exports[`WelcomeScreen successfully rendered 1`] = `
       className="places__option false"
       data-test="test-filter-click"
       onClick={[Function]}
-      tabIndex="0"
+      tabIndex={0}
     >
       Price: low to high
     </li>
@@ -50,7 +50,7 @@ exports[`WelcomeScreen successfully rendered 1`] = `
       className="places__option false"
       data-test="test-filter-click"
       onClick={[Function]}
-      tabIndex="0"
+      tabIndex={0}
     >
       Price: high to low
     </li>
@@ -58,7 +58,7 @@ exports[`WelcomeScreen successfully rendered 1`] = `
       className="places__option false"
       data-test="test-filter-click"
       onClick={[Function]}
-      tabIndex="0"
+      tabIndex={0}
     >
       Top rated first
     </li>

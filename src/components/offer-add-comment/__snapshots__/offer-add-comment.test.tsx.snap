@@ -2,18 +2,19 @@
 
 exports[`OfferAddComment successfully rendered 1`] = `
 <Connect(OfferAddComment)
-  addComment={[Function]}
+  addComment={[MockFunction]}
   comment="Mock Comment"
   id={0}
   isAuth={true}
   mark={3}
-  onCommentSet={[Function]}
-  onMarkSet={[Function]}
-  resetComments={[Function]}
+  onCommentSet={[MockFunction]}
+  onMarkSet={[MockFunction]}
+  resetComments={[MockFunction]}
 >
   <form
     action="#"
     className="reviews__form form"
+    data-test="test-addComment"
     method="post"
     onSubmit={[Function]}
   >
@@ -29,6 +30,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="5-stars"
         name="rating"
         onChange={[Function]}
@@ -53,6 +55,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="4-stars"
         name="rating"
         onChange={[Function]}
@@ -77,6 +80,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={true}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="3-stars"
         name="rating"
         onChange={[Function]}
@@ -101,6 +105,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="2-stars"
         name="rating"
         onChange={[Function]}
@@ -125,6 +130,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       <input
         checked={false}
         className="form__rating-input visually-hidden"
+        data-test="test-mark-set"
         id="1-stars"
         name="rating"
         onChange={[Function]}
@@ -152,7 +158,7 @@ exports[`OfferAddComment successfully rendered 1`] = `
       data-test="test-add-comment"
       id="review"
       name="review"
-      onChange={[Function]}
+      onChange={[MockFunction]}
       placeholder="Tell how was your stay, what you like and what can be improved"
       value="Mock Comment"
     />
@@ -189,7 +195,6 @@ exports[`OfferAddComment successfully rendered 1`] = `
       </span>
       <button
         className="reviews__submit form__submit button"
-        disabled={false}
         type="submit"
       >
         Submit

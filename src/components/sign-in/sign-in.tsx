@@ -14,7 +14,7 @@ interface InterfaceSignIn {
   email: string;
   isAuth: boolean;
   city: CityModel;
-  login: (loginData: {email: string, password: string}) => void;
+  login: (loginData: {email: string; password: string}) => void;
   error: string;
 }
 
@@ -26,10 +26,10 @@ const SignIn: React.FC <InterfaceSignIn & RouteComponentProps> = (props) => {
       props.history.push(`/`);
     }
   });
-  const formSubmitHandler = (evt) => {
+  const _formSubmitHandler = (evt) => {
     evt.preventDefault();
     const valid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
+        email
     );
 
     if (valid) {
@@ -71,7 +71,7 @@ const SignIn: React.FC <InterfaceSignIn & RouteComponentProps> = (props) => {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="#" method="post" onSubmit={formSubmitHandler} >
+            <form className="login__form form" action="#" method="post" onSubmit={_formSubmitHandler} data-test='test-login-sign-in'>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
@@ -132,3 +132,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export {SignIn};

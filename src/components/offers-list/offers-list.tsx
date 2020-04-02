@@ -1,6 +1,6 @@
 import * as React from 'react';
 import OfferCard from '../offer-card/offer-card';
-import withHoverItem from '../../hocs/withHoverItem';
+import withHoverItem from '../../hocs/withHoverItem/withHoverItem';
 import {CardModel} from '../../utils/utils';
 
 const OfferCardWiHoverItem = withHoverItem(OfferCard);

@@ -34,17 +34,17 @@ it(`SignIn successfully rendered`, () => {
   const mockFunc = jest.fn();
   const mockHistory = {push: jest.fn};
   const tree = mount(
-    <Provider store={store}>
-      <SignIn
-        password={logInMockData.password}
-        email={logInMockData.email}
-        onEmailChange={mockFunc}
-        city={mockCities[0]}
-        onFormSubmit={mockFunc}
-        onPasswordChange={mockFunc}
-        history={mockHistory}
-      />
-    </Provider>
+      <Provider store={store}>
+        <SignIn
+          password={logInMockData.password}
+          email={logInMockData.email}
+          onEmailChange={mockFunc}
+          city={mockCities[0]}
+          onFormSubmit={mockFunc}
+          onPasswordChange={mockFunc}
+          history={mockHistory}
+        />
+      </Provider>
   );
   expect(toJson(tree, {mode: `deep`})).toMatchSnapshot();
 });

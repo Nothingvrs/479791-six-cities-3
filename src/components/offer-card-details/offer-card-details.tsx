@@ -37,9 +37,10 @@ interface OfferCardDetailProps {
 }
 
 const OfferCardDetail: React.FC<OfferCardDetailProps & RouteComponentProps<MatchParams>> = (
-  props
+    props
 ) => {
   const {comments, onMount, user, isAuth, onSetFavorite, hoveredId, nearOffers, error} = props;
+
   useEffect(() => {
     onMount(Number(props.match.params.id));
   }, [props.match.params.id, onMount]);
@@ -159,16 +160,15 @@ const OfferCardDetail: React.FC<OfferCardDetailProps & RouteComponentProps<Match
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{name}</h1>
-                <Link
-                  to={!isAuth ? `/login` : `#`}
-                  onClick={() => {
-                    onSetFavorite(id, isInBookmark);
-                  }}
-                >
+                <Link to={!isAuth ? `/login` : `#`}>
                   <button
                     className={`property__bookmark-button button ${isInBookmark &&
                     `property__bookmark-button--active`}`}
                     type="button"
+                    onClick={() => {
+                      onSetFavorite(id, isInBookmark);
+                    }}
+                    data-test = 'test-add-to-favorite'
                   >
                     <svg className="property__bookmark-icon" width="31" height="33">
                       <use xlinkHref="#icon-bookmark" />
@@ -270,3 +270,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferCardDetail);
+export {OfferCardDetail};

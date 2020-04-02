@@ -1,6 +1,6 @@
 import * as React from 'react';
 import OfferReviewList from '../offer-review-list/offer-review-list';
-import withForm from "../../hocs/withForm";
+import withForm from "../../hocs/withForm/withForm";
 import OfferAddComment from "../offer-add-comment/offer-add-comment";
 import {CommentModel} from "../../utils/utils";
 

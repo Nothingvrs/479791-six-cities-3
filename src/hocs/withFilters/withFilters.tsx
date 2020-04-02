@@ -18,20 +18,15 @@ const withFilter = (Component) => {
       this.state = {
         isOpen: false
       };
-      this._filterOpenHandler = this._filterOpenHandler.bind(this);
-      this._setActiveFilter = this._setActiveFilter.bind(this);
+      this._handleFilterClick = this._handleFilterClick.bind(this);
     }
 
-    _setActiveFilter() {
-      this.setState((prevState) => ({isOpen: !prevState.isOpen}));
-    }
-
-    _filterOpenHandler() {
+    _handleFilterClick() {
       this.setState((prevState) => ({isOpen: !prevState.isOpen}));
     }
 
     render() {
-      return <Component {...this.props} onFilterOpen={this._filterOpenHandler} onActiveFilterSet = {this._setActiveFilter} isOpen = {this.state.isOpen}/>;
+      return <Component {...this.props} onFilterClick={this._handleFilterClick} isOpen = {this.state.isOpen}/>;
     }
   }
 

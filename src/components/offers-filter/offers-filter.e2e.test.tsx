@@ -7,13 +7,31 @@ import OffersFilter from './offers-filter';
 
 Enzyme.configure({adapter: new EnzymeReactAdapter()});
 
-it(`Change filter click is working`, () => {
-  const mockFunc = jest.fn();
+describe(`OfferFilter e2e`, () => {
+  const onFilterClick = jest.fn();
   const onChangeFilter = jest.fn();
-  const app = shallow(<OffersFilter onChangeFilter={onChangeFilter} filter='popular' onFilterOpen={mockFunc} isOpen={false} onActiveFilterSet={mockFunc}/>);
+  const app = shallow(
+      <OffersFilter
+        onChangeFilter={onChangeFilter}
+        filter="popular"
+        onFilterClick={onFilterClick}
+        isOpen={false}
+      />
+  );
   const filters = findByTestAtr(app, `test-filter-click`);
 
-  filters.forEach((filter) => filter.simulate(`click`));
+  it(`Change filter is working`, () => {
+    filters.forEach((filter, index) => {
+      if (index === 1) {
+        filter.simulate(`click`);
+      }
+    });
+    expect(onChangeFilter).toHaveBeenCalledTimes(1);
+    expect(onChangeFilter).toHaveBeenCalledWith(`lowToHigh`);
+  });
 
-  expect(onChangeFilter).toHaveBeenCalledTimes(4);
+  it(`Filter click is working`, () => {
+    filters.forEach((filter) => filter.simulate(`click`));
+    expect(onFilterClick).toHaveBeenCalledTimes(5);
+  });
 });
