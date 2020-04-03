@@ -30,14 +30,14 @@ const withForm = (Component) => {
       };
       this._handleEmailChange = this._handleEmailChange.bind(this);
       this._handlePasswordChange = this._handlePasswordChange.bind(this);
-      this._validationSetHandler = this._validationSetHandler.bind(this);
+      this._handleValidationSet = this._handleValidationSet.bind(this);
       this._handleMarkChange = this._handleMarkChange.bind(this);
       this._handleCommentChange = this._handleCommentChange.bind(this);
-      this._resetCommentsHandler = this._resetCommentsHandler.bind(this);
-      this._setIsSendingHandler = this._setIsSendingHandler.bind(this);
+      this._handleResetComments = this._handleResetComments.bind(this);
+      this._handleSetIsSending = this._handleSetIsSending.bind(this);
     }
 
-    _setIsSendingHandler(value) {
+    _handleSetIsSending(value) {
       this.setState({isSending: value});
     }
 
@@ -60,11 +60,11 @@ const withForm = (Component) => {
       this.setState({password: data});
     }
 
-    _validationSetHandler(validationValue) {
+    _handleValidationSet(validationValue) {
       this.setState({isValid: validationValue});
     }
 
-    _resetCommentsHandler() {
+    _handleResetComments() {
       this.setState({comment: ``, mark: 0});
       this.setState({isValid: true});
     }
@@ -75,7 +75,7 @@ const withForm = (Component) => {
           {...this.props}
           onEmailChange={this._handleEmailChange}
           onPasswordChange={this._handlePasswordChange}
-          onValidationSet={this._validationSetHandler}
+          onValidationSet={this._handleValidationSet}
           onMarkSet={this._handleMarkChange}
           onCommentSet={this._handleCommentChange}
           isValid={this.state.isValid}
@@ -83,8 +83,8 @@ const withForm = (Component) => {
           email={this.state.email}
           comment={this.state.comment}
           mark={this.state.mark}
-          onResetComments={this._resetCommentsHandler}
-          onSetIsSending={this._setIsSendingHandler}
+          onResetComments={this._handleResetComments}
+          onSetIsSending={this._handleSetIsSending}
           isSending = {this.state.isSending}
         />
       );

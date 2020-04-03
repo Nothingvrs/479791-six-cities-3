@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-import {CardModel, CommentModel, UserModel} from '../../utils/utils';
+import {CardModel, CommentModel, RATING_STAR_WIDTH, UserModel} from '../../utils/utils';
 import OffersList from '../offers-list/offers-list';
 import OffersMap from '../offers-map/offers-map';
 import {connect} from 'react-redux';
@@ -179,7 +179,7 @@ const OfferCardDetail: React.FC<OfferCardDetailProps & RouteComponentProps<Match
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `${Math.round(mark) * 20}%`}} />
+                  <span style={{width: `${Math.round(mark) * RATING_STAR_WIDTH}%`}} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{mark}</span>
