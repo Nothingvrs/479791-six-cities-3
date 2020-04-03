@@ -108,3 +108,5 @@ export const getCities = (initialOffers) => {
   });
   return cities;
 };
+
+export const RATING_STAR_WIDTH = 20;

@@ -6,6 +6,7 @@ import {getAuthStatus} from '../../reducer/user/user-selector';
 import {withRouter} from 'react-router';
 import {Authorization} from '../../reducer/user/user-reducer';
 import {Link, RouteComponentProps} from 'react-router-dom';
+import {RATING_STAR_WIDTH} from "../../utils/utils";
 
 interface OfferCardProps {
   card: CardModel;
@@ -83,7 +84,7 @@ const OfferCard: React.FC <OfferCardProps & RouteComponentProps> = (props) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${20 * Math.round(mark)}%`}}/>
+            <span style={{width: `${RATING_STAR_WIDTH * Math.round(mark)}%`}}/>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

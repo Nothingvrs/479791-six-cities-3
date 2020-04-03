@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as moment from "moment";
-import {UserModel} from "../../utils/utils";
+import {RATING_STAR_WIDTH, UserModel} from "../../utils/utils";
 
 
 interface OfferReviewProps {
@@ -35,7 +35,7 @@ const OfferReview: React.FC <OfferReviewProps> = (props) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${mark * 20}%`}}></span>
+            <span style={{width: `${mark * RATING_STAR_WIDTH}%`}}></span>
             <span className="visually-hidden">{mark}</span>
           </div>
         </div>
